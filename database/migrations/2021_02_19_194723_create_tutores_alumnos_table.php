@@ -14,15 +14,15 @@ class CreateTutoresAlumnosTable extends Migration
     public function up()
     {
         Schema::create('tutores_alumnos', function (Blueprint $table) {
-            $table->id('id_tutores_alumnos');
-            $table->unsignedBigInteger('id_tutores');
-            $table->unsignedBigInteger('id_alumnos');
+            $table->id('id_ta');
+            $table->integer('id_t')->unsigned();
+            $table->integer('id_a')->unsigned();
             $table->timestamps();
         });
         
         Schema::table('tutores_alumnos', function (Blueprint $table) {
-            $table->foreign('id_tutores')->references('id_tutores')->on('tutores');
-            $table->foreign('id_alumnos')->references('id_alumnos')->on('alumnos');
+            $table->foreign('id_t')->references('id_t')->on('tutores');
+            $table->foreign('id_a')->references('id_a')->on('alumnos');
         });
     }
 

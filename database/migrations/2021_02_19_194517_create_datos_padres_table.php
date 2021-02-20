@@ -14,8 +14,9 @@ class CreateDatosPadresTable extends Migration
     public function up()
     {
         Schema::create('datos_padres', function (Blueprint $table) {
-            $table->id('id_datos_padres');
-            $table->unsignedBigInteger('id_tutores');
+            $table->integer('id_dpa')->unsigned();
+            $table->primary('id_dpa');
+
             $table->integer('cuil');
             $table->char('situacion_academica', 1);
             $table->text('profesion', 50);
@@ -23,7 +24,7 @@ class CreateDatosPadresTable extends Migration
         });
         
         Schema::table('datos_padres', function (Blueprint $table) {
-            $table->foreign('id_tutores')->references('id_tutores')->on('tutores');
+            $table->foreign('id_dpa')->references('id_t')->on('tutores');
         });
     }
 

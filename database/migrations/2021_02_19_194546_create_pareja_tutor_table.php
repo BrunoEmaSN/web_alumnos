@@ -14,8 +14,9 @@ class CreateParejaTutorTable extends Migration
     public function up()
     {
         Schema::create('pareja_tutor', function (Blueprint $table) {
-            $table->id('id_pareja_tutor');
-            $table->unsignedBigInteger('id_tutores');
+            $table->integer('id_pat')->unsigned();
+            $table->primary('id_pat');
+
             $table->string('pareja_nombre', 75);
             $table->string('pareja_apellido', 75);
             $table->integer('pareja_dni');
@@ -25,7 +26,7 @@ class CreateParejaTutorTable extends Migration
         });
 
         Schema::table('pareja_tutor', function (Blueprint $table) {
-            $table->foreign('id_tutores')->references('id_tutores')->on('tutores');
+            $table->foreign('id_pat')->references('id_t')->on('tutores');
         });
     }
 

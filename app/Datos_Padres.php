@@ -8,7 +8,7 @@ class Datos_Padres extends Model
 {
     protected $table = 'datos_padres';
 
-    protected $primaryKey = 'id_datos_padres';
+    protected $primaryKey = 'id_dpa';
 
     protected $fillable = [
         'id_tutores',

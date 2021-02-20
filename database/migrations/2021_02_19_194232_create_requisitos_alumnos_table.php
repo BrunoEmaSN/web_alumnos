@@ -14,13 +14,19 @@ class CreateRequisitosAlumnosTable extends Migration
     public function up()
     {
         Schema::create('requisitos_alumnos', function (Blueprint $table) {
-            $table->id('id_requisitos_alumnos');
-            $table->boolean('partida_nacimiento');
-            $table->boolean('dni');
-            $table->boolean('cuil');
-            $table->boolean('foto_4x4');
-            $table->boolean('contrato');
+            $table->integer('id_ra')->unsigned();
+            $table->primary('id_ra');
+
+            $table->boolean('partida_nacimiento')->nullable($value = true);
+            $table->boolean('dni')->nullable($value = true);
+            $table->boolean('cuil')->nullable($value = true);
+            $table->boolean('foto_4x4')->nullable($value = true);
+            $table->boolean('contrato')->nullable($value = true);
             $table->timestamps();
+        });
+
+        Schema::table('requisitos_alumnos', function (Blueprint $table) {
+            $table->foreign('id_ra')->references('id_a')->on('alumnos');
         });
     }
 

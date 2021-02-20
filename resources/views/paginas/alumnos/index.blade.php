@@ -5,6 +5,9 @@
 @section('contenido')
     <h1>Alumnos</h1>
 
+    <a href="{{ route('alumnos.create') }}">Agregar Alumno</a>
+    <a href="{{ route('alumnos.edit', 'alumno') }}">Editar Alumno</a>
+
     <table id="alumnos" class="table" style="width:100%">
         <thead>
             <tr>

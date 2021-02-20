@@ -14,8 +14,9 @@ class CreateTutoresTable extends Migration
     public function up()
     {
         Schema::create('docentes', function (Blueprint $table) {
-            $table->id('id_docentes');
-            $table->unsignedBigInteger('id_datos_personales');
+            $table->integer('id_d')->unsigned();
+            $table->primary('id_d');
+
             $table->string('sede', 50);
             $table->text('titulo', 50);
             $table->string('carrera', 50);
@@ -26,7 +27,7 @@ class CreateTutoresTable extends Migration
         });
         
         Schema::table('docentes', function (Blueprint $table) {
-            $table->foreign('id_datos_personales')->references('id_datos_personales')->on('datos_personales');
+            $table->foreign('id_d')->references('id_dp')->on('datos_personales');
         });
     }
 

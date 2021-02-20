@@ -14,8 +14,9 @@ class CreateDocentesTable extends Migration
     public function up()
     {
         Schema::create('tutores', function (Blueprint $table) {
-            $table->id('id_tutores');
-            $table->unsignedBigInteger('id_datos_personales');
+            $table->integer('id_t')->unsigned();
+            $table->primary('id_t');
+
             $table->text('relacion_parentesco', 50);
             $table->boolean('conviven_con_alumno');
             $table->char('tipo_tutor', 1);
@@ -26,7 +27,7 @@ class CreateDocentesTable extends Migration
         });
         
         Schema::table('tutores', function (Blueprint $table) {
-            $table->foreign('id_datos_personales')->references('id_datos_personales')->on('datos_personales');
+            $table->foreign('id_t')->references('id_dp')->on('datos_personales');
         });
     }
 

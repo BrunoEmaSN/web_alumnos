@@ -8,7 +8,7 @@ class Tutor_Alumno extends Model
 {
     protected $table = 'tutores_alumnos';
 
-    protected $primaryKey = 'id_tutores_alumnos';
+    protected $primaryKey = 'id_ta';
 
     protected $fillable = [
         'id_tutores',

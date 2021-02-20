@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
 class Datos_Personales extends Model
 {
     protected $table = 'datos_personales';
 
-    protected $primaryKey = 'id_datos_personales';
+    protected $primaryKey = 'id_dp';
+
+    public $incrementing = false;
 
     protected $fillable = [
         'nombre',
@@ -19,7 +22,6 @@ class Datos_Personales extends Model
         'estado_civil',
         'nacionalidad',
         'tipo_documento',
-        'documento',
         'telefono_fijo',
         'telefono_movil',
         'domicilio',
@@ -27,4 +29,9 @@ class Datos_Personales extends Model
         'departamento',
         'piso'
     ];
+
+    public function alumnos()
+    {
+        return $this->hasMany('App\Alumno');
+    }
 }

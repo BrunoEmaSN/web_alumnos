@@ -3,16 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
 class Alumno extends Model
 {
     protected $table = 'alumnos';
 
-    protected $primaryKey = 'id_alumnos';
+    protected $primaryKey = 'id_a';
+
+    public $incrementing = false;
 
     protected $fillable = [
-        'id_datos_personales',
-        'id_requisitos_alumnos',
+        'fecha_agregado',
         'nivel',
         'grado_ano',
         'division',
@@ -23,16 +25,16 @@ class Alumno extends Model
 
     public function datos_personales()
     {
-        return $this->belongsTo('App\Models\Datos_Personales');
+        return $this->belongsTo('App\Datos_Personales');
     }
 
     public function requisitos_alumnos()
     {
-        return $this->belongsTo('App\Models\Requisitos_Alumnos');
+        return $this->belongsTo('App\Requisitos_Alumnos');
     }
 
     public function tutores_alumnos()
     {
-        return $this->hasMany('App\Models\Tutor_Alumno');
+        return $this->hasMany('App\Tutor_Alumno');
     }
 }
