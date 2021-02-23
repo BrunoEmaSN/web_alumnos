@@ -14,12 +14,12 @@ class CreateDatosPersonalesTable extends Migration
     public function up()
     {
         Schema::create('datos_personales', function (Blueprint $table) {
-            $table->integer('id_dp')->unsigned()->nullable($value = true);
+            $table->integer('id_dp')->unsigned();
             $table->primary('id_dp');
 
-            $table->char('tipo_documento', 1)->nullable($value = true);
-            $table->string('nombre', 75)->nullable($value = true);
-            $table->string('apellido', 75)->nullable($value = true);
+            $table->char('tipo_documento', 4);
+            $table->string('nombre', 75);
+            $table->string('apellido', 75);
             $table->date('fecha_nacimiento')->nullable($value = true);
             $table->char('sexo', 1)->nullable($value = true);
             $table->char('estado_civil', 1)->nullable($value = true);
