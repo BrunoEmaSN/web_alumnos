@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+// Models
 use App\Alumno;
-
 use App\Datos_Personales;
-
 use App\Requisitos_Alumnos;
+//Traits
+use App\Traits\Datos_Personales_Traits;
+use App\Traits\Alumnos_Traits;
+use App\Traits\Requisitos_Alumnos_Traits;
 
 class Alumnos_Controller extends Controller
 {
@@ -17,6 +19,12 @@ class Alumnos_Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use Datos_Personales_Traits;
+
+    use Alumnos_Traits;
+
+    use Requisitos_Alumnos_Traits;
+
     public function index()
     {
         $alumnos = Alumno::join('datos_personales AS dp', 'dp.id_dp', '=', 'alumnos.id_a')
@@ -68,37 +76,9 @@ class Alumnos_Controller extends Controller
         $alumnos = new Alumno;
         $requisitos_alumnos = new Requisitos_Alumnos;
 
-        $datos_personales->id_dp = $request->documento;
-        $datos_personales->tipo_documento = $request->tipo_documento;
-        $datos_personales->nombre = $request->nombre;
-        $datos_personales->apellido = $request->apellido;
-        $datos_personales->fecha_nacimiento = $request->fecha_nacimiento;
-        $datos_personales->sexo = $request->sexo;
-        $datos_personales->estado_civil = $request->estado_civil;
-        $datos_personales->nacionalidad = $request->nacionalidad;
-        $datos_personales->telefono_fijo = $request->telefono_fijo;
-        $datos_personales->telefono_movil = $request->telefono_movil;
-        $datos_personales->domicilio = $request->domicilio;
-        $datos_personales->numero = $request->numero;
-        $datos_personales->departamento = $request->departamento;
-        $datos_personales->piso = $request->piso;
-
-        $alumnos->id_a = $request->documento;
-        $alumnos->fecha_agregado = $request->fecha_agregado;
-        $alumnos->nivel = $request->nivel;
-        $alumnos->turno = $request->turno;
-        $alumnos->tipo_estado = $request->estado;
-        $alumnos->grado_ano = $request->grado_ano;
-        $alumnos->division = $request->division;
-        $alumnos->lugar_nacimiento = $request->lugar_nacimiento;
-        $alumnos->alumno_observaciones = $request->alumno_observaciones;
-
-        $requisitos_alumnos->id_ra = $request->documento;
-        $requisitos_alumnos->partida_nacimiento = ($request->partida_nacimiento == 'on')?1:0;
-        $requisitos_alumnos->dni = ($request->dni == 'on')?1:0;
-        $requisitos_alumnos->cuil = ($request->cuil == 'on')?1:0;
-        $requisitos_alumnos->foto_4x4 = ($request->foto_4x4 == 'on')?1:0;
-        $requisitos_alumnos->contrato = ($request->contrato == 'on')?1:0;
+        $datos_personales = $this->datos_personales_save($request, $datos_personales);
+        $alumnos = $this->alumnos_save($request, $alumnos);
+        $requisitos_alumnos = $this->requisitos_alumnos_save($request, $requisitos_alumnos);
 
         $datos_personales->save();
         $alumnos->save();
@@ -151,38 +131,14 @@ class Alumnos_Controller extends Controller
         $datos_personales = Datos_Personales::find($id);
         $requisitos_alumnos = Requisitos_Alumnos::find($id);
         
-        $datos_personales->tipo_documento = $request->tipo_documento;
-        $datos_personales->nombre = $request->nombre;
-        $datos_personales->apellido = $request->apellido;
-        $datos_personales->fecha_nacimiento = $request->fecha_nacimiento;
-        $datos_personales->sexo = $request->sexo;
-        $datos_personales->estado_civil = $request->estado_civil;
-        $datos_personales->nacionalidad = $request->nacionalidad;
-        $datos_personales->telefono_fijo = $request->telefono_fijo;
-        $datos_personales->telefono_movil = $request->telefono_movil;
-        $datos_personales->domicilio = $request->domicilio;
-        $datos_personales->numero = $request->numero;
-        $datos_personales->departamento = $request->departamento;
-        $datos_personales->piso = $request->piso;
-
-        $alumnos->fecha_agregado = $request->fecha_agregado;
-        $alumnos->nivel = $request->nivel;
-        $alumnos->turno = $request->turno;
-        $alumnos->tipo_estado = $request->estado;
-        $alumnos->grado_ano = $request->grado_ano;
-        $alumnos->division = $request->division;
-        $alumnos->lugar_nacimiento = $request->lugar_nacimiento;
-        $alumnos->alumno_observaciones = $request->alumno_observaciones;
-
-        $requisitos_alumnos->partida_nacimiento = ($request->partida_nacimiento == 'on')?1:0;
-        $requisitos_alumnos->dni = ($request->dni == 'on')?1:0;
-        $requisitos_alumnos->cuil = ($request->cuil == 'on')?1:0;
-        $requisitos_alumnos->foto_4x4 = ($request->foto_4x4 == 'on')?1:0;
-        $requisitos_alumnos->contrato = ($request->contrato == 'on')?1:0;
+        $datos_personales = $this->datos_personales_save($request, $datos_personales);
+        $alumnos = $this->alumnos_save($request, $alumnos);
+        $requisitos_alumnos = $this->requisitos_alumnos_save($request, $requisitos_alumnos);
 
         $datos_personales->save();
         $alumnos->save();
         $requisitos_alumnos->save();
+
         return Alumnos_Controller::index();
     }
 
