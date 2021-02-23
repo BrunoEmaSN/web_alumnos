@@ -17,12 +17,15 @@ class CreateTutoresTable extends Migration
             $table->integer('id_d')->unsigned();
             $table->primary('id_d');
 
-            $table->string('sede', 50);
-            $table->text('titulo', 50);
-            $table->string('carrera', 50);
-            $table->integer('cuil');
-            $table->boolean('estado');
-            $table->string('docente_observaciones', 80);
+            $table->date('fecha_agregado');
+            $table->string('sedes', 50)->nullable($value = true);
+            $table->text('titulo', 50)->nullable($value = true);
+            $table->integer('cuit')->nullable($value = true);
+            $table->boolean('subencionado')->nullable($value = true);
+            $table->boolean('contratado')->nullable($value = true);
+            $table->boolean('monotributista')->nullable($value = true);
+            $table->boolean('estado')->nullable($value = true);
+            $table->string('docente_observaciones', 80)->nullable($value = true);
             $table->timestamps();
         });
         

@@ -17,7 +17,7 @@ class CreateAlumnosTable extends Migration
             $table->integer('id_a')->unsigned()->nullable($value = true);
             $table->primary('id_a');
 
-            $table->date('fecha_agregado')->nullable($value = true);
+            $table->date('fecha_agregado');
             $table->char('nivel', 1)->nullable($value = true);
             $table->char('turno', 1)->nullable($value = true);
             $table->smallinteger('grado_ano')->nullable($value = true);

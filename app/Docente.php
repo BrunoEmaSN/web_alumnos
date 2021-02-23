@@ -11,10 +11,11 @@ class Docente extends Model
     protected $primaryKey = 'id_d';
 
     protected $fillable = [
+        'fecha_agregado',
         'sede',
         'titulo',
         'carrera',
-        'cuil',
+        'cuit',
         'estado',
         'docente_observaciones'
     ];
