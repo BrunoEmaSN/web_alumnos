@@ -21,6 +21,7 @@ class Datos_Personales extends Model
         'dni',
         'estado_civil',
         'nacionalidad',
+        'lugar_nacimiento',
         'tipo_documento',
         'telefono_fijo',
         'telefono_movil',

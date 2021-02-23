@@ -13,6 +13,7 @@ trait Datos_Personales_Traits {
         $datos_personales->sexo = $request->sexo;
         $datos_personales->estado_civil = $request->estado_civil;
         $datos_personales->nacionalidad = $request->nacionalidad;
+        $datos_personales->lugar_nacimiento = $request->lugar_nacimiento;
         $datos_personales->telefono_fijo = $request->telefono_fijo;
         $datos_personales->telefono_movil = $request->telefono_movil;
         $datos_personales->domicilio = $request->domicilio;

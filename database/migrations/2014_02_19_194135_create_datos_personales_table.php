@@ -24,6 +24,7 @@ class CreateDatosPersonalesTable extends Migration
             $table->char('sexo', 1)->nullable($value = true);
             $table->char('estado_civil', 1)->nullable($value = true);
             $table->text('nacionalidad', 70)->nullable($value = true);
+            $table->string('lugar_nacimiento', 75)->nullable($value = true);
             $table->string('telefono_fijo', 15)->nullable($value = true);
             $table->string('telefono_movil', 15)->nullable($value = true);
             $table->string('domicilio', 100)->nullable($value = true);

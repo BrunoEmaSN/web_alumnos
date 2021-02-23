@@ -1,4 +1,5 @@
-<div>
+<fieldset>
+    <legend>Requisitos</legend>
     <div>
         <label for="partida_nacimiento">Partida Nacimiento</label>
         <input
@@ -39,4 +40,4 @@
             {{ ($requisitos->contrato) ? 'checked' : '' }}
         >
     </div>
-</div>
+</fieldset>

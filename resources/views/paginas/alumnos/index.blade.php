@@ -23,8 +23,22 @@
                 <td>{{ $a->agregado }}</td>
                 <td>{{ $a->nombre }}</td>
                 <td>{{ $a->apellido }}</td>
-                <td>{{ $a->documento }}</td>
-                <td>{{ $a->estado }}</td>
+                <td>
+                    {{ $a->tipo_documento.':'.$a->documento }}
+                </td>
+                <td>
+                    @switch($a->estado)
+                        @case('I')
+                            Inscripto
+                            @break
+                        @case('N')
+                            No Inscripto
+                            @break
+                        @case('B')
+                            Baja
+                            @break
+                    @endswitch
+                </td>
                 <td>
                     <div>{{ (!$a->partida_nacimiento) ? '- Partida Nacimiento' : '' }}</div>
                     <div>{{ (!$a->dni) ? '- D.N.I.' : '' }}</div>

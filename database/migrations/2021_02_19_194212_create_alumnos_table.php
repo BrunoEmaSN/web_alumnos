@@ -23,7 +23,6 @@ class CreateAlumnosTable extends Migration
             $table->smallinteger('grado_ano')->nullable($value = true);
             $table->char('division', 1)->nullable($value = true);
             $table->char('tipo_estado', 1)->nullable($value = true);
-            $table->string('lugar_nacimiento', 75)->nullable($value = true);
             $table->string('alumno_observaciones', 80)->nullable($value = true);
             $table->timestamps();
         });

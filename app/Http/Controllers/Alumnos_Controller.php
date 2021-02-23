@@ -33,7 +33,8 @@ class Alumnos_Controller extends Controller
                 'alumnos.fecha_agregado AS agregado',
                 'dp.nombre',
                 'dp.apellido',
-                'alumnos.id_a AS documento',
+                'dp.id_dp AS documento',
+                'dp.tipo_documento AS tipo_documento',
                 'alumnos.tipo_estado AS estado',
                 'ra.partida_nacimiento',
                 'ra.dni',
@@ -72,13 +73,10 @@ class Alumnos_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $datos_personales = new Datos_Personales;
-        $alumnos = new Alumno;
-        $requisitos_alumnos = new Requisitos_Alumnos;
-
-        $datos_personales = $this->datos_personales_save($request, $datos_personales);
-        $alumnos = $this->alumnos_save($request, $alumnos);
-        $requisitos_alumnos = $this->requisitos_alumnos_save($request, $requisitos_alumnos);
+        $datos_personales = $this->datos_personales_save($request, new Datos_Personales);
+        $alumnos = $this->alumnos_save($request, new Alumno);
+        $alumnos->fecha_agregado = date("Y-m-d");
+        $requisitos_alumnos = $this->requisitos_alumnos_save($request, new Requisitos_Alumnos);
 
         $datos_personales->save();
         $alumnos->save();
@@ -126,14 +124,10 @@ class Alumnos_Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $alumnos = Alumno::find($id);
-        $datos_personales = Datos_Personales::find($id);
-        $requisitos_alumnos = Requisitos_Alumnos::find($id);
-        
-        $datos_personales = $this->datos_personales_save($request, $datos_personales);
-        $alumnos = $this->alumnos_save($request, $alumnos);
-        $requisitos_alumnos = $this->requisitos_alumnos_save($request, $requisitos_alumnos);
+    {   
+        $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
+        $alumnos = $this->alumnos_save($request, Alumno::find($id));
+        $requisitos_alumnos = $this->requisitos_alumnos_save($request, Requisitos_Alumnos::find($id));
 
         $datos_personales->save();
         $alumnos->save();

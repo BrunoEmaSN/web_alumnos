@@ -20,7 +20,6 @@ class Alumno extends Model
         'grado_ano',
         'division',
         'tipo_estado',
-        'lugar_nacimiento',
         'alumno_observaciones'
     ];
 
