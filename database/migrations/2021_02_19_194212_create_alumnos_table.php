@@ -14,7 +14,7 @@ class CreateAlumnosTable extends Migration
     public function up()
     {
         Schema::create('alumnos', function (Blueprint $table) {
-            $table->integer('id_a')->unsigned();
+            $table->integer('id_a')->unsigned()->nullable($value = true);
             $table->primary('id_a');
 
             $table->date('fecha_agregado')->nullable($value = true);
