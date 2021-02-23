@@ -82,7 +82,10 @@ class Docentes_Controller extends Controller
      */
     public function show($id)
     {
-        //
+        return view('paginas.docentes.show', [
+            'docentes' => Docente::find($id),
+            'datos_personales' => Datos_Personales::find($id)
+        ]);
     }
 
     /**
