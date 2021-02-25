@@ -4,7 +4,6 @@
 
 @section('contenido')
     <h1>Tutores</h1>
-    <a href="{{ route('tutores.create') }}">Agregar Tutor</a>
     <table id="tutores" class="table" style="width:100%">
         <thead>
             <tr>
@@ -54,7 +53,12 @@
 
     <script>
         $(document).ready( function () {
-            $('#tutores').DataTable();
+            $('#tutores').DataTable({
+                dom: 'l<"toolbar">frtip',
+                initComplete: function(){
+                    $("div.toolbar").html('<a href="{{ route('tutores.create') }}">Agregar Tutor</a>');           
+                } 
+            });
         } );
     </script>
 @endsection
