@@ -17,6 +17,7 @@ class CreateTutoresAlumnosTable extends Migration
             $table->id('id_ta');
             $table->integer('id_t')->unsigned();
             $table->integer('id_a')->unsigned();
+            $table->boolean('conviven_con_alumno');
             $table->timestamps();
         });
         

@@ -17,7 +17,8 @@ class CreateDatosPadresTable extends Migration
             $table->integer('id_dpa')->unsigned();
             $table->primary('id_dpa');
 
-            $table->integer('cuil');
+            $table->BigInteger('cuil')->unsigned();
+            $table->char('nivel_academico', 1);
             $table->char('situacion_academica', 1);
             $table->text('profesion', 50);
             $table->timestamps();

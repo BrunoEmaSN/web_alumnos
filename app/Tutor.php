@@ -12,7 +12,6 @@ class Tutor extends Model
 
     protected $fillable = [
         'relacion_parentesco',
-        'conviven_con_alumno',
         'tipo_tutor',
         'tiene_pareja',
         'telefono_laboral',

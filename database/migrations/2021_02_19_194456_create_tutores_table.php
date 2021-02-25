@@ -18,7 +18,6 @@ class CreateDocentesTable extends Migration
             $table->primary('id_t');
 
             $table->text('relacion_parentesco', 50);
-            $table->boolean('conviven_con_alumno');
             $table->char('tipo_tutor', 1);
             $table->boolean('tiene_pareja');
             $table->string('telefono_laboral', 15);

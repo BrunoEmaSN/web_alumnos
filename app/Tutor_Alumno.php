@@ -12,7 +12,8 @@ class Tutor_Alumno extends Model
 
     protected $fillable = [
         'id_tutores',
-        'id_alumnos'
+        'id_alumnos',
+        'conviven_con_alumno'
     ];
 
     public function tutores()
