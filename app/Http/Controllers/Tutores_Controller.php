@@ -150,6 +150,8 @@ class Tutores_Controller extends Controller
     {
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
         $tutores = $this->tutores_save($request, Tutor::find($id));
+        $datos_personales->save();
+        $tutores->save();
 
         // si es un padre o una madre se guarda los datos_padres
         if ($tutores->tipo_tutor == 'P' || $tutores->tipo_tutor == 'M') {
@@ -161,11 +163,6 @@ class Tutores_Controller extends Controller
             $pareja_tutor = $this->pareja_tutor_save($request, Pareja_Tutor::find($id));
             $pareja_tutor->save();
         }
-
-        $datos_personales->save();
-        $tutores->save();
-        $pareja_tutor->save();
-        $datos_padres->save();
 
         return Tutores_Controller::index();
     }
