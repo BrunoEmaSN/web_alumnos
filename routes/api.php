@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Datos_Personales;
 use App\Alumno;
+use App\Tutor;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +20,9 @@ use App\Alumno;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('buscar_tutores', function (Request $request) {
+    $tutores = Datos_Personales::find($request->id);
+    return $tutores;
 });

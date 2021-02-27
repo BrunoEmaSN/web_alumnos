@@ -15,9 +15,10 @@ class CreateTutoresAlumnosTable extends Migration
     {
         Schema::create('tutores_alumnos', function (Blueprint $table) {
             $table->id('id_ta');
-            $table->integer('id_t')->unsigned();
-            $table->integer('id_a')->unsigned();
+            $table->BigInteger('id_t')->unsigned();
+            $table->BigInteger('id_a')->unsigned();
             $table->boolean('conviven_con_alumno');
+            $table->text('relacion_parentesco', 50);
             $table->timestamps();
         });
         

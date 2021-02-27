@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-<div>
+<div class="conatainer">
     <h1>Docente: <strong>{{ $datos_personales->nombre.' '.$datos_personales->apellido }}</strong></h1>
     <div>
         <label for="cuit">C.U.I.T:</label>

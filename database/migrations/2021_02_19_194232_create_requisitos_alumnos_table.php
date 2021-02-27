@@ -14,7 +14,7 @@ class CreateRequisitosAlumnosTable extends Migration
     public function up()
     {
         Schema::create('requisitos_alumnos', function (Blueprint $table) {
-            $table->integer('id_ra')->unsigned()->nullable($value = true);
+            $table->BigInteger('id_ra')->unsigned()->nullable($value = true);
             $table->primary('id_ra');
 
             $table->boolean('partida_nacimiento')->nullable($value = true);

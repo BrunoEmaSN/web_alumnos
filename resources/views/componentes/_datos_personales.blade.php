@@ -1,8 +1,8 @@
 <fieldset>
     <legend>Datos personales</legend>
-    <div>
-        <label for="tipo_documento">Tipo de Documento</label>
-        <select name="tipo_documento" id="tipo_documento">
+    <div class="col-md-6">
+        <label for="tipo_documento" class="form-label">Tipo de Documento</label>
+        <select class="form-control" name="tipo_documento" id="tipo_documento">
             <option value="CUIL" {{ ($datos_personales->tipo_documento == 'CUIL') ? 'selected' : '' }}>
                 C.U.I.L.
             </option>
@@ -23,9 +23,10 @@
             </option>
         </select>
     </div>
-    <div>
-        <label for="documento">Documento</label>
+    <div class="col-md-6">
+        <label for="documento" class="form-label">Documento</label>
         <input
+            class="form-control"
             type="number"
             name="documento"
             id="documento"
@@ -33,9 +34,10 @@
             value="{{ old('documento', $datos_personales->id_dp) }}"
         >
     </div>
-    <div>
-        <label for="nombre">Nombre</label>
+    <div class="col-md-6">
+        <label for="nombre" class="form-label">Nombre</label>
         <input
+            class="form-control"
             type="text"
             name="nombre"
             id="nombre"
@@ -43,9 +45,10 @@
             value="{{ old('nombre', $datos_personales->nombre) }}"
         >
     </div>
-    <div>
-        <label for="apellido">Apellido</label>
+    <div class="col-md-6">
+        <label for="apellido" class="form-label">Apellido</label>
         <input
+            class="form-control"
             type="text"
             name="apellido"
             id="apellido"
@@ -53,9 +56,10 @@
             value="{{ old('apellido', $datos_personales->apellido) }}"
         >
     </div>
-    <div>
-        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+    <div class="col-md-6">
+        <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
         <input 
+            class="form-control"
             type="date"
             name="fecha_nacimiento"
             id="fecha_nacimiento"
@@ -63,9 +67,10 @@
             value="{{ old('fecha nacimiento', $datos_personales->fecha_nacimiento) }}"
         >
     </div>
-    <div>
-        <label for="nacionalidad">Nacionalidad</label>
+    <div class="col-md-6">
+        <label for="nacionalidad" class="form-label">Nacionalidad</label>
         <input
+            class="form-control"
             type="text"
             name="nacionalidad"
             id="nacionalidad"
@@ -73,9 +78,10 @@
             value="{{ old('nacionalidad', $datos_personales->nacionalidad) }}"
         >
     </div>
-    <div>
-        <label for="lugar_nacimiento">Lugar Nacimiento</label>
+    <div class="col-md-6">
+        <label for="lugar_nacimiento" class="form-label">Lugar Nacimiento</label>
         <input
+            class="form-control"
             type="text"
             name="lugar_nacimiento"
             id="lugar_nacimiento"
@@ -83,9 +89,9 @@
             value="{{ old('lugar nacimiento', $datos_personales->lugar_nacimiento) }}"
         >
     </div>
-    <div>
-        <label for="estado_civil">Estado Civil</label>
-        <select name="estado_civil" id="estado_civil">
+    <div class="col-md-6">
+        <label for="estado_civil" class="form-label">Estado Civil</label>
+        <select class="form-control" name="estado_civil" id="estado_civil">
             <option value="S" {{ ($datos_personales->estado_civil == 'S') ? 'selected' : '' }}>
                 Soltero
             </option>
@@ -100,9 +106,9 @@
             </option>
         </select>
     </div>
-    <div>
-        <label for="sexo">Sexo</label>
-        <select name="sexo" id="sexo">
+    <div class="col-md-6">
+        <label for="sexo" class="form-label">Sexo</label>
+        <select class="form-control" name="sexo" id="sexo">
             <option value="M" {{ ($datos_personales->sexo == 'M') ? 'selected' : '' }}>
                 Masculino
             </option>
@@ -114,18 +120,21 @@
             </option>
         </select>
     </div>
-    <div>
-        <label for="domicilio">Domicilio</label>
+    <div class="col-md-6">
+        <label for="domicilio" class="form-label">Domicilio</label>
         <input
+            class="form-control"
             type="text"
             name="domicilio"
             id="domicilio"
             placeholder="domicilio"
             value="{{ old('domicilio', $datos_personales->domicilio) }}"
         >
-    <div>
-        <label for="departamento">Departamento</label>
+    </div>
+    <div class="col-md-6">
+        <label for="departamento" class="form-label">Departamento</label>
         <input
+            class="form-control"
             type="text"
             name="departamento"
             id="departamento"
@@ -133,9 +142,10 @@
             value="{{ old('departamento', $datos_personales->departamento) }}"
         >
     </div>
-    <div>
-        <label for="numero">Numero</label>
+    <div class="col-md-6">
+        <label for="numero" class="form-label">Numero</label>
         <input
+            class="form-control"
             type="number"
             name="numero"
             id="numero"
@@ -143,9 +153,10 @@
             value="{{ old('numero', $datos_personales->numero) }}"
         >
     </div>
-    <div>
-        <label for="piso">Piso</label>
+    <div class="col-md-6">
+        <label for="piso" class="form-label">Piso</label>
         <input
+            class="form-control"
             type="text"
             name="piso"
             id="piso"
@@ -153,18 +164,20 @@
             value="{{ old('piso', $datos_personales->piso) }}"
         >
     </div>
-    <div>
-        <label for="telefono_fijo">Telefono Fijo</label>
+    <div class="col-md-6">
+        <label for="telefono_fijo" class="form-label">Telefono Fijo</label>
         <input
+            class="form-control"
             type="text"
             name="telefono_fijo"
             placeholder="telefono fijo"
             value="{{ old('telefono fijo', $datos_personales->telefono_fijo) }}"
         >
     </div>
-    <div>
-        <label for="telefono_movil">Telefono Movil</label>
+    <div class="col-md-6">
+        <label for="telefono_movil" class="form-label">Telefono Movil</label>
         <input
+            class="form-control"
             type="text"
             name="telefono_movil"
             id="telefono_movil"

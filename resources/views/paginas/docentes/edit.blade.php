@@ -3,17 +3,21 @@
 @section('title', 'Docentes')
 
 @section('contenido')
+<div class="container">
+    <form method="POST" action="{{ route('docentes.update', $docentes['datos_personales']->id_dp) }}">
+        @csrf
+        @method('PATCH')
 
-<form method="POST" action="{{ route('docentes.update', $docentes['datos_personales']->id_dp) }}">
-    @csrf
-    @method('PATCH')
+        @include('paginas.docentes.partes._form', ['docentes' => $docentes])
 
-    @include('paginas.docentes.partes._form', ['docentes' => $docentes])
+        <div class="d-grid gap-2 col-6">
+            <button class="btn btn-success btn-block" type="submit">Actualizar</button>
+        </div>
 
-    <button>Actualizar</button>
+    </form>
 
-</form>
-
-<a href="{{ route('docentes.index') }}">Volver</a>
-
+    <div class="d-grid gap-2 col-6">
+        <a class="btn btn-outline-primary btn-block" role="button" href="{{ route('docentes.index') }}">Volver</a>
+    </div>
+</div>
 @endsection

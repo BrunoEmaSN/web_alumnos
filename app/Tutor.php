@@ -11,11 +11,13 @@ class Tutor extends Model
     protected $primaryKey = 'id_t';
 
     protected $fillable = [
-        'relacion_parentesco',
-        'tipo_tutor',
         'tiene_pareja',
         'telefono_laboral',
-        'ocupacion'
+        'ocupacion',
+        'cuil',
+        'nivel_academico',
+        'situacion_academica',
+        'profesion'
     ];
 
     public function datos_personales()

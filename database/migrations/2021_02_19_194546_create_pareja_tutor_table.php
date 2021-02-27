@@ -14,14 +14,14 @@ class CreateParejaTutorTable extends Migration
     public function up()
     {
         Schema::create('pareja_tutor', function (Blueprint $table) {
-            $table->integer('id_pat')->unsigned();
+            $table->BigInteger('id_pat')->unsigned();
             $table->primary('id_pat');
 
             $table->string('pareja_nombre', 75);
             $table->string('pareja_apellido', 75);
-            $table->integer('pareja_dni');
-            $table->string('pareja_telefono_fijo', 15);
-            $table->string('pareja_telefono_movil', 15);
+            $table->BigInteger('pareja_dni')->unsigned();
+            $table->string('pareja_telefono_fijo', 15)->nullable($value = true);
+            $table->string('pareja_telefono_movil', 15)->nullable($value = true);
             $table->timestamps();
         });
 

@@ -14,14 +14,16 @@ class CreateDocentesTable extends Migration
     public function up()
     {
         Schema::create('tutores', function (Blueprint $table) {
-            $table->integer('id_t')->unsigned();
+            $table->BigInteger('id_t')->unsigned();
             $table->primary('id_t');
 
-            $table->text('relacion_parentesco', 50);
-            $table->char('tipo_tutor', 1);
-            $table->boolean('tiene_pareja');
-            $table->string('telefono_laboral', 15);
-            $table->string('ocupacion', 50);
+            $table->BigInteger('cuil')->unsigned()->nullable($value = true);
+            $table->char('nivel_academico', 1)->nullable($value = true);
+            $table->char('situacion_academica', 1)->nullable($value = true);
+            $table->text('profesion', 50)->nullable($value = true);
+            $table->boolean('tiene_pareja')->nullable($value = true);
+            $table->string('telefono_laboral', 15)->nullable($value = true);
+            $table->string('ocupacion', 50)->nullable($value = true);
             $table->timestamps();
         });
         

@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Alumno;
 use App\Datos_Personales;
 use App\Requisitos_Alumnos;
+use App\Tutor_Alumno;
 //Traits
 use App\Traits\Datos_Personales_Traits;
 use App\Traits\Alumnos_Traits;
+use App\Traits\Tutores_Alumnos_Traits;
 use App\Traits\Requisitos_Alumnos_Traits;
 
 class Alumnos_Controller extends Controller
@@ -24,6 +26,8 @@ class Alumnos_Controller extends Controller
     use Alumnos_Traits;
 
     use Requisitos_Alumnos_Traits;
+
+    use Tutores_Alumnos_Traits;
 
     public function index()
     {
@@ -60,8 +64,10 @@ class Alumnos_Controller extends Controller
             'datos_personales' => new Datos_Personales,
             'requisitos_alumnos' => new Requisitos_Alumnos
         ];
+        $tutores_alumnos = new Tutor_Alumno;
         return view('paginas.alumnos.create', [
-            'alumnos' => $alumnos
+            'alumnos' => $alumnos,
+            'tutores_alumnos' => $tutores_alumnos
         ]);
     }
 
@@ -81,6 +87,8 @@ class Alumnos_Controller extends Controller
         $datos_personales->save();
         $alumnos->save();
         $requisitos_alumnos->save();
+
+        $this->tutores_alumnos_save($request);
 
         return Alumnos_Controller::index();
     }
@@ -111,8 +119,20 @@ class Alumnos_Controller extends Controller
             'datos_personales' => Datos_Personales::find($id),
             'requisitos_alumnos' => Requisitos_Alumnos::find($id)
         ];
+        $tutores_alumnos = Tutor_Alumno::join('datos_personales AS dp', 'dp.id_dp', '=', 'tutores_alumnos.id_t')
+        ->select(
+            'dp.nombre',
+            'dp.apellido',
+            'tutores_alumnos.relacion_parentesco',
+            'tutores_alumnos.conviven_con_alumno'
+        )
+        ->where(
+            'id_a', $id
+        )
+        ->get();
         return view('paginas.alumnos.edit', [
-            'alumnos' => $alumnos
+            'alumnos' => $alumnos,
+            'tutores_alumnos' => $tutores_alumnos
         ]);
     }
 
@@ -124,7 +144,7 @@ class Alumnos_Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
         $alumnos = $this->alumnos_save($request, Alumno::find($id));
         $requisitos_alumnos = $this->requisitos_alumnos_save($request, Requisitos_Alumnos::find($id));
@@ -132,6 +152,9 @@ class Alumnos_Controller extends Controller
         $datos_personales->save();
         $alumnos->save();
         $requisitos_alumnos->save();
+
+        $this->tutores_alumnos_delete($request);
+        $this->tutores_alumnos_save($request);
 
         return Alumnos_Controller::index();
     }
@@ -148,6 +171,7 @@ class Alumnos_Controller extends Controller
         $alumnos = Alumno::find($id);
         $requisitos_alumnos = Requisitos_Alumnos::find($id);
 
+        $this->tutores_alumnos_delete($request);
         $requisitos_alumnos->delete();
         $alumnos->delete();
         $datos_personales->delete();

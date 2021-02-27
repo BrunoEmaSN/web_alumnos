@@ -1,8 +1,8 @@
 <fieldset>
     <legend>Datos Academicos</legend>
-    <div>
-        <label for="nivel">Nivel</label>
-        <select name="nivel" id="nivel">
+    <div class="col-md-6">
+        <label for="nivel" class="form-label">Nivel</label>
+        <select class="form-control" name="nivel" id="nivel">
             <option value="3" {{ ($alumnos->nivel == '3') ? 'selected' : '' }}>
                 Salita 3
             </option>
@@ -26,9 +26,10 @@
             </option>
         </select>
     </div>
-    <div>
-        <label for="grado_ano">Grado/Año</label>
+    <div class="col-md-6">
+        <label for="grado_ano" class="form-label">Grado/Año</label>
         <input
+            class="form-control"
             type="number" 
             name="grado_ano"
             id="grado_ano"
@@ -36,18 +37,19 @@
             value="{{ old('grado año', $alumnos->grado_ano) }}"
         >
     </div>
-    <div>
-        <label for="division">Division</label>
+    <div class="col-md-6">
+        <label for="division" class="form-label">Division</label>
         <input
+            class="form-control"
             type="text"
             name="division"
             placeholder="division"
             value="{{ old('division', $alumnos->division) }}"
         >
     </div>
-    <div>
-        <label for="turno">Turno</label>
-        <select name="turno" id="turno">
+    <div class="col-md-6">
+        <label for="turno" class="form-label">Turno</label>
+        <select class="form-control" name="turno" id="turno">
             <option value="M" {{ ($alumnos->turno == 'M') ? 'selected' : '' }}>
                 Mañana
             </option>
@@ -59,9 +61,9 @@
             </option>
         </select>
     </div>
-    <div>
-        <label for="estado">Estado</label>
-        <select name="estado" id="estado">
+    <div class="col-md-6">
+        <label for="estado" class="form-label">Estado</label>
+        <select class="form-control" name="estado" id="estado">
             <option value="I" {{ ($alumnos->tipo_estado == 'I') ? 'selected' : '' }}>
                 Inscripto
             </option>
@@ -73,9 +75,10 @@
             </option>
         </select>
     </div>
-    <div>
-        <label for="alumno_observaciones">Observaciones</label>
+    <div class="col-md-6">
+        <label for="alumno_observaciones" class="form-label">Observaciones</label>
         <textarea
+            class="form-control"
             name="alumno_observaciones"
             id="alumno_observaciones"
             rows="3"

@@ -4,7 +4,7 @@
 
 @section('contenido')
 
-<div>
+<div class="container">
     <h1>Alumno: <strong>{{ $datos_personales->nombre.' '.$datos_personales->apellido }}</strong></h1>
     <div>
         <label for="dni">D.N.I.:</label>

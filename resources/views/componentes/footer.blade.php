@@ -1,4 +1,4 @@
-<section >
+<section class="container">
     <div className='social-icons'>
         <a href="{{ route('inicio') }}">Inicio</a>
     </div>

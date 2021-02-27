@@ -24,3 +24,5 @@ Route::resource('alumnos', 'Alumnos_Controller');
 Route::resource('docentes', 'Docentes_Controller');
 
 Route::resource('tutores', 'Tutores_Controller');
+
+Auth::routes(['register' => false]);

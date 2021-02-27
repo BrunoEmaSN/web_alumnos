@@ -14,7 +14,7 @@ class CreateDatosPersonalesTable extends Migration
     public function up()
     {
         Schema::create('datos_personales', function (Blueprint $table) {
-            $table->integer('id_dp')->unsigned();
+            $table->BigInteger('id_dp')->unsigned();
             $table->primary('id_dp');
 
             $table->char('tipo_documento', 4);
