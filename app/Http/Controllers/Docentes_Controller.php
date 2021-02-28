@@ -71,7 +71,7 @@ class Docentes_Controller extends Controller
         $datos_personales->save();
         $docentes->save();
 
-        return Docentes_Controller::index();
+        return redirect()->route('docentes.index');
     }
 
     /**
@@ -120,7 +120,7 @@ class Docentes_Controller extends Controller
         $datos_personales->save();
         $docentes->save();
 
-        return Docentes_Controller::index();
+        return redirect()->route('docentes.index');
     }
 
     /**
@@ -137,6 +137,6 @@ class Docentes_Controller extends Controller
         $docentes->delete();
         $datos_personales->delete();
 
-        return Docentes_Controller::index();
+        return redirect()->route('docentes.index');
     }
 }

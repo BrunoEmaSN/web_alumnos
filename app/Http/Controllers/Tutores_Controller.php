@@ -78,7 +78,7 @@ class Tutores_Controller extends Controller
             $pareja_tutor->save();
         }
 
-        return Tutores_Controller::index();
+        return redirect()->route('tutores.index');
     }
 
     /**
@@ -145,7 +145,7 @@ class Tutores_Controller extends Controller
             $this->pareja_tutor_delete(Pareja_Tutor::find($id));
         }
 
-        return Tutores_Controller::index();
+        return redirect()->route('tutores.index');
     }
 
     /**
@@ -167,6 +167,6 @@ class Tutores_Controller extends Controller
         $tutores->delete();
         $datos_personales->delete();
         
-        return Tutores_Controller::index();
+        return redirect()->route('tutores.index');
     }
 }

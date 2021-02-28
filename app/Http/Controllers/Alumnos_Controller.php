@@ -90,7 +90,7 @@ class Alumnos_Controller extends Controller
 
         $this->tutores_alumnos_save($request);
 
-        return Alumnos_Controller::index();
+        return redirect()->route('alumnos.index');
     }
 
     /**
@@ -121,6 +121,7 @@ class Alumnos_Controller extends Controller
         ];
         $tutores_alumnos = Tutor_Alumno::join('datos_personales AS dp', 'dp.id_dp', '=', 'tutores_alumnos.id_t')
         ->select(
+            'dp.id_dp AS tutor_documento',
             'dp.nombre',
             'dp.apellido',
             'tutores_alumnos.relacion_parentesco',
@@ -156,7 +157,7 @@ class Alumnos_Controller extends Controller
         $this->tutores_alumnos_delete($request);
         $this->tutores_alumnos_save($request);
 
-        return Alumnos_Controller::index();
+        return redirect()->route('alumnos.index');
     }
 
     /**
@@ -176,6 +177,6 @@ class Alumnos_Controller extends Controller
         $alumnos->delete();
         $datos_personales->delete();
         
-        return Alumnos_Controller::index();
+        return redirect()->route('alumnos.index');
     }
 }

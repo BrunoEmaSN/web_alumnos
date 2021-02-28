@@ -32,7 +32,7 @@
             <input
                 type="hidden"
                 name="tutor_documento[]"
-                value="{{ $alumnos['datos_alumnos']->documento }}">
+                value="{{ $ta->tutor_documento }}">
             <input
                 type="hidden"
                 name="tutor_parentesco[]"
