@@ -3,5 +3,9 @@
 
     @include('paginas.alumnos.partes._datos_alumnos', ['alumnos' => $alumnos['datos_alumnos']])
 
-    @include('paginas.alumnos.partes._requisitos_alumnos', ['requisitos' => $alumnos['requisitos_alumnos']])
+    <div class="row">
+        <div class="col-md-6">
+            @include('paginas.alumnos.partes._requisitos_alumnos', ['requisitos' => $alumnos['requisitos_alumnos']])
+        </div>
+    </div>
 </div>

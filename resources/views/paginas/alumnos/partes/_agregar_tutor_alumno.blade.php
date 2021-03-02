@@ -68,7 +68,7 @@ $(document).ready(function(){
         let apellido = $('#tutor_apellido').val();
         let parentesco = $('#tutor_parentesco').val();
         $('#tutores').append(
-            '<div class="alert alert-light alert-dismissible fade show" role="alert">'+
+            '<div class="alert alert-dark alert-dismissible fade show col-md-6" role="alert">'+
                 '<h2><strong>'+ parentesco +': </strong>'+ nombre +' '+ apellido +'</h2>'+
                 '<label for="conviven_con_alumno" class="form-check-label">Conviven con Alumno</label>'+
                 '<input class="form-check-input"id="conviven_con_alumno"name="conviven_con_alumno[]"type="checkbox">'+

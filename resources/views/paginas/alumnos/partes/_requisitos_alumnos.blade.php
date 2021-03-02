@@ -1,6 +1,6 @@
 <fieldset>
     <legend>Requisitos</legend>
-    <div class="col-md-6 form-check">
+    <div class="form-check">
         <label for="partida_nacimiento" class="form-check-label">Partida Nacimiento</label>
         <input
             class="form-check-input"
@@ -9,7 +9,7 @@
             {{ ($requisitos->partida_nacimiento) ? 'checked' : ''}}
         >
     </div>
-    <div class="col-md-6 form-check">
+    <div class="form-check">
         <label for="dni" class="form-check-label">D.N.I.</label>
         <input
             class="form-check-input"
@@ -18,7 +18,7 @@
             {{ ($requisitos->dni) ? 'checked' : '' }}
         >
     </div>
-    <div class="col-md-6 form-check">
+    <div class="form-check">
         <label for="cuil" class="form-check-label">C.U.I.L.</label>
         <input
             class="form-check-input" 
@@ -27,7 +27,7 @@
             {{ ($requisitos->cuil) ? 'checked' : '' }}
         >
     </div>
-    <div class="col-md-6 form-check">
+    <div class="form-check">
         <label for="foto_4x4" class="form-check-label">Foto 4 x 4</label>
         <input
             class="form-check-input"
@@ -36,7 +36,7 @@
             {{ ($requisitos->foto_4x4) ? 'checked' : '' }}
         >
     </div>
-    <div class="col-md-6 form-check">
+    <div class="form-check">
         <label for="contrato" class="form-check-label">Contrato</label>
         <input
             class="form-check-input" 
