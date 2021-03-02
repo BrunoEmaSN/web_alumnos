@@ -42,12 +42,28 @@
                         <div>{{ ($d->monotributista) ? '- Monotributista' : '' }}</div>
                     </td>
                     <td>
-                        <button><a href="{{ route('docentes.show', $d->documento) }}">Ver</a></button>
-                        <button><a href="{{ route('docentes.edit', $d->documento) }}">Editar</a></button>
+                        <a 
+                            type="button"
+                            class="btn btn-outline-info"
+                            href="{{ route('docentes.show', $d->documento) }}"
+                            title="ver"
+                        >
+                            <i class="far fa-eye"></i>
+                        </a>
+                        <a
+                            type="button"
+                            class="btn btn-outline-warning"
+                            href="{{ route('docentes.edit', $d->documento) }}"
+                            title="editar"
+                        >
+                            <i class="fas fa-edit"></i>
+                        </a>
                         <form action="{{ route('docentes.destroy', $d->documento) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button>Eliminar</button>
+                            <button class="btn btn-outline-danger" title="eliminar">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>

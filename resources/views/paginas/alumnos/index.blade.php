@@ -49,12 +49,28 @@
                         <div>{{ (!$a->contrato) ? '- Contrato' : '' }}</div>
                     </td>
                     <td>
-                        <button><a href="{{ route('alumnos.show', $a->documento) }}">Ver</a></button>
-                        <button><a href="{{ route('alumnos.edit', $a->documento) }}">Editar</a></button>
+                        <a 
+                            type="button"
+                            class="btn btn-outline-info"
+                            href="{{ route('alumnos.show', $a->documento) }}"
+                            title="ver"
+                        >
+                            <i class="far fa-eye"></i>
+                        </a>
+                        <a
+                            type="button"
+                            class="btn btn-outline-warning"
+                            href="{{ route('alumnos.edit', $a->documento) }}"
+                            title="editar"
+                        >
+                            <i class="fas fa-edit"></i>
+                        </a>
                         <form action="{{ route('alumnos.destroy', $a->documento) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button>Eliminar</button>
+                            <button class="btn btn-outline-danger" title="eliminar">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </form>
                     </td>
                 </tr>

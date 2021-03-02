@@ -37,12 +37,28 @@
                         <div>{{ (!is_null($t->telefono_movil)) ? 'telefono movil:'.$t->telefono_movil : '' }}</div>
                     </td>
                     <td>
-                        <button><a href="{{ route('tutores.show', $t->documento) }}">Ver</a></button>
-                        <button><a href="{{ route('tutores.edit', $t->documento) }}">Editar</a></button>
+                        <a 
+                            type="button"
+                            class="btn btn-outline-info"
+                            href="{{ route('tutores.show', $t->documento) }}"
+                            title="ver"
+                        >
+                            <i class="far fa-eye"></i>
+                        </a>
+                        <a
+                            type="button"
+                            class="btn btn-outline-warning"
+                            href="{{ route('tutores.edit', $t->documento) }}"
+                            title="editar"
+                        >
+                            <i class="fas fa-edit"></i>
+                        </a>
                         <form action="{{ route('tutores.destroy', $t->documento) }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button>Eliminar</button>
+                            <button class="btn btn-outline-danger" title="eliminar">
+                                <i class="fas fa-times"></i>
+                            </button>
                         </form>
                     </td>
                 @endforeach
