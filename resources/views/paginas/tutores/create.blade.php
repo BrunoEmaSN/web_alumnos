@@ -9,13 +9,18 @@
 
         @include('paginas.tutores.partes._form', ['tutores' => $tutores])
 
-        <div class="d-grid gap-2 col-6">
+        <hr>
+
+        <div class="row justify-content-md-between">
+            <div class="d-grid gap-2 col-2">
+                <a class="btn btn-outline-primary btn-block" role="button" href="{{ route('tutores.index') }}">Volver</a>
+            </div>
+            <div class="d-grid gap-2 col-2">
+            
             <button class="btn btn-success btn-block" type="submit">Guardar</button>
+            </div>
         </div>
 
     </form>
-    <div class="d-grid gap-2 col-6">
-        <a class="btn btn-outline-primary btn-block" role="button" href="{{ route('tutores.index') }}">Volver</a>
-    </div>
 </div>
 @endsection

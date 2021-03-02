@@ -16,6 +16,7 @@
             'alumnos' => $alumnos,
             'tutores_alumnos' => $tutores_alumnos
         ])
+        
         <hr>
 
         <div class="row justify-content-md-between">
@@ -24,7 +25,7 @@
             </div>
             <div class="d-grid gap-2 col-2">
             
-            <button class="btn btn-success btn-block" type="submit">Guardar</button>
+            <button class="btn btn-success btn-block" type="submit">Actualizar</button>
             </div>
         </div>
 
