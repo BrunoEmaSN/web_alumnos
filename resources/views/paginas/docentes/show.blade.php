@@ -4,28 +4,40 @@
 
 @section('contenido')
 
-<div class="conatainer">
+<div class="container">
     <h1>Docente: <strong>{{ $datos_personales->nombre.' '.$datos_personales->apellido }}</strong></h1>
-    <div>
-        <label for="cuit">C.U.I.T:</label>
-        <p id="cuit">{{ $docentes->cuit }}</p>
-    </div>
-    <div>
-        <label for="contratos">Contratos:</label>
-        <p id="contratos">{{ ($docentes->subencionado) ? 'Subencionado' : '' }}</p>
-        <p id="contratos">{{ ($docentes->contratado) ? 'Contratado' : '' }}</p>
-        <p id="contratos">{{ ($docentes->monotributista) ? 'Monotributista' : '' }}</p>
-    </div>
-    <div>
-        <label for="titulo">Titulo:</label>
-        <p id="titulo">{{ $docentes->titulo }}</p>
-    </div>
-    <div>
-        <label for="docente_observaciones">Observaciones:</label>
-        <p id="docente_observaciones">{{ $docentes->docente_observaciones }}</p>
+    <dl class="row">
+        <dt class="col-sm-1">C.U.I.T.</dt>
+        <dd class="col-sm-2">{{ $docentes->cuit }}</dd>
+        <dt class="col-sm-1">Titulo</dt>
+        <dd class="col-sm-8">{{ $docentes->titulo }}</dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-1">Contratos</dt>
+        <dd class="col-sm-11">
+            <div>
+                {{ ($docentes->subencionado) ? 'Subencionado' : '' }}
+            </div>
+            <div>
+                {{ ($docentes->contratado) ? 'Contratado' : '' }}
+            </div>
+            <div>
+                {{ ($docentes->monotributista) ? 'Monotributista' : '' }}
+            </div>
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-1">Observaciones</dt>
+        <dd class="col-sm-11">{{ $docentes->docente_observaciones }}</dd>
+    </dl>
+
+    <hr>
+
+    <div class="row justify-content-md-start">
+        <div class="d-grid gap-2 col-2">
+            <a class="btn btn-outline-primary btn-block" role="button" href="{{ route('docentes.index') }}">Volver</a>
+        </div>
     </div>
 </div>
-
-<a href="{{ route('docentes.index') }}">Volver</a>
 
 @endsection
