@@ -1,8 +1,5 @@
-<section class="container">
-    <div className='social-icons'>
-        <a href="{{ route('inicio') }}">Inicio</a>
-    </div>
-    <small className='website-rights'>
+<div class="container">
+    <small class='row justify-content-md-center'>
         Web Alumnos © {{ date('Y') }}
     </small>
-</section>
+</div>
