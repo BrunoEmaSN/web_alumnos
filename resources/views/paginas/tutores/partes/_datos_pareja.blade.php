@@ -9,6 +9,8 @@
                 name="pareja_nombre"
                 id="pareja_nombre"
                 value="{{ old('pareja nombre',$pareja->pareja_nombre)}}"
+                required
+                minlength="4"
             >
         </div>
         <div class="col-md-6">
@@ -19,6 +21,8 @@
                 name="pareja_apellido"
                 id="pareja_apellido"
                 value="{{ old('pareja apellido',$pareja->pareja_apellido)}}"
+                required
+                minlength="4"
             >
         </div>
     </div>
@@ -31,6 +35,8 @@
                 name="pareja_dni"
                 id="pareja_dni"
                 value="{{ old('pareja dni',$pareja->pareja_dni)}}"
+                required
+                minlength="11111111"
             >
         </div>
     </div>

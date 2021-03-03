@@ -36,7 +36,13 @@
                 id="grado_ano"
                 placeholder="grado/año"
                 value="{{ old('grado año', $alumnos->grado_ano) }}"
+                required
+                min="1"
+                max="9"
             >
+            @error('grado_ano')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-2">
             <label for="division" class="form-label">Division</label>
@@ -46,7 +52,12 @@
                 name="division"
                 placeholder="division"
                 value="{{ old('division', $alumnos->division) }}"
+                required
+                maxlength="1"
             >
+            @error('division')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="turno" class="form-label">Turno</label>

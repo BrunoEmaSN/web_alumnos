@@ -42,7 +42,7 @@ $(document).ready(function(){
                                 '<tr>'+
                                     '<td>Parentesco</td>'+
                                     '<td>'+
-                                        '<input id="tutor_parentesco"class="form-control"type="text">'+
+                                        '<input id="tutor_parentesco"class="form-control"type="text" required minlenght="3">'+
                                     '</td>'+
                                 '</tr>'+
                             '</tbody>'+
@@ -52,7 +52,9 @@ $(document).ready(function(){
                 else{
                     $('#btn_agregar').attr('disabled', true);
                     $('#datos_tutor').append(
-                        '<a id="tutor_nuevo" href="{{ route("tutores.create") }}" target="_blank">Nuevo Tutor</a>'
+                        '<div class="d-grid gap-2 mx-auto py-3">'+
+                            '<a id="tutor_nuevo" class="btn btn-lg btn-outline-info" href="{{ route("tutores.create") }}" target="_blank">Nuevo Tutor</a>'+
+                        '</div>'
                     );
                 }
             },
@@ -67,17 +69,19 @@ $(document).ready(function(){
         let nombre = $('#tutor_nombre').val();
         let apellido = $('#tutor_apellido').val();
         let parentesco = $('#tutor_parentesco').val();
-        $('#tutores').append(
-            '<div class="alert alert-dark alert-dismissible fade show col-md-6" role="alert">'+
-                '<h2><strong>'+ parentesco +': </strong>'+ nombre +' '+ apellido +'</h2>'+
-                '<label for="conviven_con_alumno" class="form-check-label">Conviven con Alumno</label>'+
-                '<input class="form-check-input"id="conviven_con_alumno"name="conviven_con_alumno[]"type="checkbox">'+
-                '<input type="hidden" name="tutor_documento[]" value="'+ documento +'">'+
-                '<input type="hidden" name="tutor_parentesco[]" value="'+ parentesco +'">'+
-                '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+
-            '</div>'
-        );
-        $('#modal_buscar_tutores').modal('hide');
+        if (parentesco != '' && parentesco != undefined) {
+            $('#tutores').append(
+                '<div class="alert alert-dark alert-dismissible fade show col-md-6" role="alert">'+
+                    '<h2><strong>'+ parentesco +': </strong>'+ nombre +' '+ apellido +'</h2>'+
+                    '<label for="conviven_con_alumno" class="form-check-label">Conviven con Alumno</label>'+
+                    '<input class="form-check-input"id="conviven_con_alumno"name="conviven_con_alumno[]"type="checkbox">'+
+                    '<input type="hidden" name="tutor_documento[]" value="'+ documento +'">'+
+                    '<input type="hidden" name="tutor_parentesco[]" value="'+ parentesco +'">'+
+                    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'+
+                '</div>'
+            );
+            $('#modal_buscar_tutores').modal('hide');
+        }
     })
 });
 </script>

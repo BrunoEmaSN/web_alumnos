@@ -9,7 +9,12 @@
                 name="cuit"
                 id="cuit"
                 value="{{ old('cuit', $docentes->cuit) }}"
+                required
+                min="11111111111"
             >
+            @error('cuit')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="titulo" class="form-label">Titulo</label>
@@ -19,7 +24,11 @@
                 name="titulo"
                 id="titulo"
                 value="{{ old('titulo', $docentes->titulo) }}"
+                required
             >
+            @error('titulo')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="sedes" class="form-label">Sedes</label>

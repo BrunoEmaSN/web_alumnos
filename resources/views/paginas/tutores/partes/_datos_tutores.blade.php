@@ -9,6 +9,8 @@
                 name="cuil"
                 id="cuil"
                 value="{{ old('cuil',$tutores->cuil) }}"
+                required
+                min="11111111111"
             >
         </div>
     </div>
@@ -38,7 +40,7 @@
         <div class="col-md-6">
             <label for="nivel_academico" class="form-label">Nivel Academico</label>
             <select
-                class="form-control"
+                class="form-select"
                 name="nivel_academico"
                 id="nivel_academico"
             >

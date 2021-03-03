@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-2">
             <label for="tipo_documento" class="form-label">Tipo de Documento</label>
-            <select class="form-control" name="tipo_documento" id="tipo_documento">
+            <select class="form-select" name="tipo_documento" id="tipo_documento">
                 <option value="CUIL" {{ ($datos_personales->tipo_documento == 'CUIL') ? 'selected' : '' }}>
                     C.U.I.L.
                 </option>
@@ -27,13 +27,18 @@
         <div class="col-md-4">
             <label for="documento" class="form-label">Documento</label>
             <input
-                class="form-control"
+                class="form-control @error('documento') is-invalid @enderror"
                 type="number"
                 name="documento"
                 id="documento"
                 placeholder="documento"
                 value="{{ old('documento', $datos_personales->id_dp) }}"
+                required
+                min="11111111"
             >
+            @error('documento')
+                <div class="alert alert-danger">{{ $error }}</div>
+            @enderror
         </div>
     </div>
     <div class="row">
@@ -46,7 +51,12 @@
                 id="nombre"
                 placeholder="nombre"
                 value="{{ old('nombre', $datos_personales->nombre) }}"
+                required
+                minlength="4"
             >
+            @error('nombre')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="apellido" class="form-label">Apellido</label>
@@ -57,7 +67,12 @@
                 id="apellido"
                 placeholder="apellido"
                 value="{{ old('apellido', $datos_personales->apellido) }}"
+                required
+                minlength="4"
             >
+            @error('apellido')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-4">
             <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
@@ -68,7 +83,11 @@
                 id="fecha_nacimiento"
                 placeholder="fecha nacimiento"
                 value="{{ old('fecha nacimiento', $datos_personales->fecha_nacimiento) }}"
+                required
             >
+            @error('fecha_nacimiento')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
     </div>
     <div class="row">
@@ -81,7 +100,11 @@
                 id="nacionalidad"
                 placeholder="nacionalidad"
                 value="{{ old('nacionalidad', $datos_personales->nacionalidad) }}"
+                required
             >
+            @error('nacionalidad')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="col-md-6">
             <label for="lugar_nacimiento" class="form-label">Lugar Nacimiento</label>
@@ -92,7 +115,11 @@
                 id="lugar_nacimiento"
                 placeholder="lugar nacimiento"
                 value="{{ old('lugar nacimiento', $datos_personales->lugar_nacimiento) }}"
+                required
             >
+            @error('lugar_nacimiento')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
     </div>
     <div class="row">
