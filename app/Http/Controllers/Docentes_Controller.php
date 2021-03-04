@@ -64,6 +64,9 @@ class Docentes_Controller extends Controller
      */
     public function store(Request $request)
     {
+        $this->validacion_request_datos_personales();
+        $this->validacion_request_docentes();
+
         $datos_personales = $this->datos_personales_save($request, new Datos_Personales);
         $docentes = $this->docentes_save($request, new Docente);
         $docentes->fecha_agregado = date("Y-m-d");
@@ -114,6 +117,9 @@ class Docentes_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validacion_request_datos_personales();
+        $this->validacion_request_docentes();
+
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
         $docentes = $this->docentes_save($request, Docente::find($id));
 

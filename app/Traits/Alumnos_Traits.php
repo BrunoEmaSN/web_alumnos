@@ -15,4 +15,12 @@ trait Alumnos_Traits {
 
         return $alumnos;
     }
+
+    public function validacion_request_alumnos()
+    {
+        return request()->validate([
+            'grado_ano' => 'required',
+            'division' => 'required'
+        ]);
+    }
 }

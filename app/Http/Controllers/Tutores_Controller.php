@@ -67,6 +67,9 @@ class Tutores_Controller extends Controller
      */
     public function store(Request $request)
     {
+        $this->validacion_request_datos_personales();
+        $this->validacion_request_tutores();
+
         $datos_personales = $this->datos_personales_save($request, new Datos_Personales);
         $tutores = $this->tutores_save($request, new Tutor);
 
@@ -74,6 +77,7 @@ class Tutores_Controller extends Controller
         $tutores->save();
         // si tiene una pareja se guarda los datos de pareja_tutor
         if ($tutores->tiene_pareja) {
+            $this->validacion_request_pareja_tutor();
             $pareja_tutor = $this->pareja_tutor_save($request, new Pareja_Tutor);
             $pareja_tutor->save();
         }
@@ -130,6 +134,9 @@ class Tutores_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validacion_request_datos_personales();
+        $this->validacion_request_tutores();
+
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
         $tutores = $this->tutores_save($request, Tutor::find($id));
         $datos_personales->save();
@@ -138,6 +145,7 @@ class Tutores_Controller extends Controller
         // si tiene una pareja se guarda los datos de pareja_tutor
         // si quito la pareja que tenia se elimina de la BD
         if ($tutores->tiene_pareja) {
+            $this->validacion_request_pareja_tutor();
             $pareja_tutor = $this->pareja_tutor_save($request, Pareja_Tutor::find($id));
             $pareja_tutor->save();
         }

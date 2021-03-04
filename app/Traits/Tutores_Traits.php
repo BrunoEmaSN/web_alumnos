@@ -16,4 +16,20 @@ trait Tutores_Traits {
 
         return $tutores;
     }
+
+    public function validacion_request_tutores()
+    {
+        return request()->validate([
+            'situacion_academica' => 'required'
+        ]);
+    }
+
+    public function validacion_request_pareja_tutor()
+    {
+        return request()->validate([
+            'pareja_nombre' => 'required',
+            'pareja_apellido' => 'required',
+            'pareja_dni' => 'required'
+        ]);
+    }
 }

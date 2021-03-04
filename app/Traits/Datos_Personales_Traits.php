@@ -23,4 +23,16 @@ trait Datos_Personales_Traits {
 
         return $datos_personales;
     }
+
+    public function validacion_request_datos_personales()
+    {
+        return request()->validate([
+            'documento' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'fecha_nacimiento' => 'required',
+            'nacionalidad' => 'required',
+            'lugar_nacimiento' => 'required'
+        ]);
+    }
 }

@@ -25,7 +25,7 @@
             </select>
         </div>
         <div class="col-md-4">
-            <label for="documento" class="form-label">Documento</label>
+            <label for="documento" class="form-label">Documento<small>(*)</small></label>
             <input
                 class="form-control @error('documento') is-invalid @enderror"
                 type="number"
@@ -33,92 +33,95 @@
                 id="documento"
                 placeholder="documento"
                 value="{{ old('documento', $datos_personales->id_dp) }}"
-                required
-                min="11111111"
             >
             @error('documento')
-                <div class="alert alert-danger">{{ $error }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">Nombre<small>(*)</small></label>
             <input
-                class="form-control"
+                class="form-control @error('nombre') is-invalid @enderror"
                 type="text"
                 name="nombre"
                 id="nombre"
                 placeholder="nombre"
                 value="{{ old('nombre', $datos_personales->nombre) }}"
-                required
-                minlength="4"
             >
             @error('nombre')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="apellido" class="form-label">Apellido</label>
+            <label for="apellido" class="form-label">Apellido<small>(*)</small></label>
             <input
-                class="form-control"
+                class="form-control @error('apellido') is-invalid @enderror"
                 type="text"
                 name="apellido"
                 id="apellido"
                 placeholder="apellido"
                 value="{{ old('apellido', $datos_personales->apellido) }}"
-                required
-                minlength="4"
             >
             @error('apellido')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento<small>(*)</small></label>
             <input 
-                class="form-control"
+                class="form-control @error('fecha_nacimiento') is-invalid @enderror"
                 type="date"
                 name="fecha_nacimiento"
                 id="fecha_nacimiento"
                 placeholder="fecha nacimiento"
                 value="{{ old('fecha nacimiento', $datos_personales->fecha_nacimiento) }}"
-                required
             >
             @error('fecha_nacimiento')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <label for="nacionalidad" class="form-label">Nacionalidad</label>
+            <label for="nacionalidad" class="form-label">Nacionalidad<small>(*)</small></label>
             <input
-                class="form-control"
+                class="form-control @error('nacionalidad') is-invalid @enderror"
                 type="text"
                 name="nacionalidad"
                 id="nacionalidad"
                 placeholder="nacionalidad"
                 value="{{ old('nacionalidad', $datos_personales->nacionalidad) }}"
-                required
             >
             @error('nacionalidad')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-6">
-            <label for="lugar_nacimiento" class="form-label">Lugar Nacimiento</label>
+            <label for="lugar_nacimiento" class="form-label">Lugar Nacimiento<small>(*)</small></label>
             <input
-                class="form-control"
+                class="form-control @error('lugar_nacimiento') is-invalid @enderror"
                 type="text"
                 name="lugar_nacimiento"
                 id="lugar_nacimiento"
                 placeholder="lugar nacimiento"
                 value="{{ old('lugar nacimiento', $datos_personales->lugar_nacimiento) }}"
-                required
             >
             @error('lugar_nacimiento')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
     </div>

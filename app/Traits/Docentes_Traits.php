@@ -17,4 +17,12 @@ trait Docentes_Traits {
 
         return $docentes;
     }
+    
+    public function validacion_request_docentes()
+    {
+        return request()->validate([
+            'cuit' => 'required',
+            'titulo' => 'required'
+        ]);
+    }
 }

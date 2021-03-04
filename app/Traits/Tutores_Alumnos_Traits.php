@@ -20,7 +20,7 @@ trait Tutores_Alumnos_Traits {
             }
         }
     }
-
+    
     public function tutores_alumnos_delete($request)
     {
         $tutores_alumnos = Tutor_Alumno::where(

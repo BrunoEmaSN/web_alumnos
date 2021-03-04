@@ -30,33 +30,32 @@
         <div class="col-md-2">
             <label for="grado_ano" class="form-label">Grado/Año</label>
             <input
-                class="form-control"
+                class="form-control @error('grado_ano') is-invalid @enderror"
                 type="number" 
                 name="grado_ano"
                 id="grado_ano"
                 placeholder="grado/año"
                 value="{{ old('grado año', $alumnos->grado_ano) }}"
-                required
-                min="1"
-                max="9"
             >
             @error('grado_ano')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-2">
             <label for="division" class="form-label">Division</label>
             <input
-                class="form-control"
+                class="form-control @error('division') is-invalid @enderror"
                 type="text"
                 name="division"
                 placeholder="division"
                 value="{{ old('division', $alumnos->division) }}"
-                required
-                maxlength="1"
             >
             @error('division')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-4">

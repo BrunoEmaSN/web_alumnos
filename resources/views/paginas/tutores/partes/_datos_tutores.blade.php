@@ -10,7 +10,6 @@
                 id="cuil"
                 value="{{ old('cuil',$tutores->cuil) }}"
                 required
-                min="11111111111"
             >
         </div>
     </div>
@@ -68,7 +67,7 @@
             <div id="situacion_academica">
                 <div class="form-check form-check-inline">
                     <input
-                        class="form-check-input"
+                        class="form-check-input @error('situacion_academica') is-invalid @enderror"
                         type="radio"
                         name="situacion_academica"
                         id="incompleto"
@@ -79,7 +78,7 @@
                 </div>
                 <div class="form-check form-check-inline">
                     <input
-                        class="form-check-input"
+                        class="form-check-input @error('situacion_academica') is-invalid @enderror"
                         type="radio"
                         name="situacion_academica"
                         id="completo"
@@ -88,6 +87,11 @@
                     >
                     <label class="form-check-label" for="completo">Completo</label>
                 </div>
+                @error('situacion_academica')
+                    <span class="invalid-feedback" role="alert">
+                        {{ $message }}
+                    </span>
+                @enderror
             </div>
         </div>
     </div>

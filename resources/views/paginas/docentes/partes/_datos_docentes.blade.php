@@ -4,22 +4,23 @@
         <div class="col-md-4">
             <label for="cuit" class="form-label">C.U.I.T.</label>
             <input
-                class="form-control"
+                class="form-control @error('cuit') is-invalid @enderror"
                 type="number"
                 name="cuit"
                 id="cuit"
                 value="{{ old('cuit', $docentes->cuit) }}"
                 required
-                min="11111111111"
             >
             @error('cuit')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-4">
             <label for="titulo" class="form-label">Titulo</label>
             <input
-                class="form-control"
+                class="form-control @error('titulo') is-invalid @enderror"
                 type="text"
                 name="titulo"
                 id="titulo"
@@ -27,7 +28,9 @@
                 required
             >
             @error('titulo')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
         <div class="col-md-4">
