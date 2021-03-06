@@ -21,10 +21,10 @@ trait Tutores_Alumnos_Traits {
         }
     }
     
-    public function tutores_alumnos_delete($request)
+    public function tutores_alumnos_delete($id)
     {
         $tutores_alumnos = Tutor_Alumno::where(
-            'id_a', $request->documento
+            'id_a', $id
         )
         ->delete();
     }

@@ -76,4 +76,5 @@
             $('#docentes').DataTable();
         } );
     </script>
+    @include('componentes._notificaciones_toastr')
 @endsection

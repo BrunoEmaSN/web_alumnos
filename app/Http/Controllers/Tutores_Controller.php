@@ -72,14 +72,18 @@ class Tutores_Controller extends Controller
 
         $datos_personales = $this->datos_personales_save($request, new Datos_Personales);
         $tutores = $this->tutores_save($request, new Tutor);
-
-        $datos_personales->save();
-        $tutores->save();
-        // si tiene una pareja se guarda los datos de pareja_tutor
-        if ($tutores->tiene_pareja) {
-            $this->validacion_request_pareja_tutor();
-            $pareja_tutor = $this->pareja_tutor_save($request, new Pareja_Tutor);
-            $pareja_tutor->save();
+        try {
+            $datos_personales->save();
+            $tutores->save();
+            // si tiene una pareja se guarda los datos de pareja_tutor
+            if ($tutores->tiene_pareja) {
+                $this->validacion_request_pareja_tutor();
+                $pareja_tutor = $this->pareja_tutor_save($request, new Pareja_Tutor);
+                $pareja_tutor->save();
+            }
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
         }
 
         return redirect()->route('tutores.index');
@@ -139,18 +143,22 @@ class Tutores_Controller extends Controller
 
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
         $tutores = $this->tutores_save($request, Tutor::find($id));
-        $datos_personales->save();
-        $tutores->save();
-
-        // si tiene una pareja se guarda los datos de pareja_tutor
-        // si quito la pareja que tenia se elimina de la BD
-        if ($tutores->tiene_pareja) {
-            $this->validacion_request_pareja_tutor();
-            $pareja_tutor = $this->pareja_tutor_save($request, Pareja_Tutor::find($id));
-            $pareja_tutor->save();
-        }
-        else{
-            $this->pareja_tutor_delete(Pareja_Tutor::find($id));
+        try {
+            $datos_personales->save();
+            $tutores->save();
+            // si tiene una pareja se guarda los datos de pareja_tutor
+            // si quito la pareja que tenia se elimina de la BD
+            if ($tutores->tiene_pareja) {
+                $this->validacion_request_pareja_tutor();
+                $pareja_tutor = $this->pareja_tutor_save($request, Pareja_Tutor::find($id));
+                $pareja_tutor->save();
+            }
+            else{
+                $this->pareja_tutor_delete(Pareja_Tutor::find($id));
+            }
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
         }
 
         return redirect()->route('tutores.index');
@@ -172,8 +180,13 @@ class Tutores_Controller extends Controller
             $pareja_tutor->delete();
         }
 
-        $tutores->delete();
-        $datos_personales->delete();
+        try {
+            $tutores->delete();
+            $datos_personales->delete();
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+        }
         
         return redirect()->route('tutores.index');
     }

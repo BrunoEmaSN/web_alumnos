@@ -1,30 +1,48 @@
 <fieldset>
     <legend>Datos personales</legend>
     <div class="row">
-        <div class="col-md-2">
-            <label for="tipo_documento" class="form-label">Tipo de Documento</label>
+        <div class="col-md-3">
+            <label for="tipo_documento" class="form-label">Tipo de Documento<small>(*)</small></label>
             <select class="form-select" name="tipo_documento" id="tipo_documento">
-                <option value="CUIL" {{ ($datos_personales->tipo_documento == 'CUIL') ? 'selected' : '' }}>
+                <option
+                    value="CUIL"
+                    {{ (old('tipo_documento',$datos_personales->tipo_documento) == 'CUIL') ? 'selected' : '' }}
+                >
                     C.U.I.L.
                 </option>
-                <option value="CUIT" {{ ($datos_personales->tipo_documento == 'CUIT') ? 'selected' : '' }}>
+                <option
+                    value="CUIT"
+                    {{ (old('tipo_documento',$datos_personales->tipo_documento) == 'CUIT') ? 'selected' : '' }}
+                >
                     C.U.I.T.
                 </option>
-                <option value="DNI" {{ ($datos_personales->tipo_documento == 'DNI') ? 'selected' : '' }}>
+                <option
+                    value="DNI"
+                    {{ (old('tipo_documento',$datos_personales->tipo_documento) == 'DNI') ? 'selected' : '' }}
+                >
                     D.N.I.
                 </option>
-                <option value="LE" {{ ($datos_personales->tipo_documento == 'LE') ? 'selected' : '' }}>
+                <option
+                    value="LE"
+                    {{ (old('tipo_documento',$datos_personales->tipo_documento) == 'LE') ? 'selected' : '' }}
+                >
                     Libreta Enrolamiento
                 </option>
-                <option value="LC" {{ ($datos_personales->tipo_documento == 'LC') ? 'selected' : '' }}>
+                <option
+                    value="LC"
+                    {{ (old('tipo_documento',$datos_personales->tipo_documento) == 'LC') ? 'selected' : '' }}
+                >
                     Libreta Civica
                 </option>
-                <option value="O" {{ ($datos_personales->tipo_documento == 'O') ? 'selected' : '' }}>
+                <option
+                    value="O"
+                    {{ (old('tipo_documento',$datos_personales->tipo_documento) == 'O') ? 'selected' : '' }}
+                >
                     Otros
                 </option>
             </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label for="documento" class="form-label">Documento<small>(*)</small></label>
             <input
                 class="form-control @error('documento') is-invalid @enderror"
@@ -82,7 +100,7 @@
                 name="fecha_nacimiento"
                 id="fecha_nacimiento"
                 placeholder="fecha nacimiento"
-                value="{{ old('fecha nacimiento', $datos_personales->fecha_nacimiento) }}"
+                value="{{ old('fecha_nacimiento', $datos_personales->fecha_nacimiento) }}"
             >
             @error('fecha_nacimiento')
                 <span class="invalid-feedback" role="alert">
@@ -116,7 +134,7 @@
                 name="lugar_nacimiento"
                 id="lugar_nacimiento"
                 placeholder="lugar nacimiento"
-                value="{{ old('lugar nacimiento', $datos_personales->lugar_nacimiento) }}"
+                value="{{ old('lugar_nacimiento', $datos_personales->lugar_nacimiento) }}"
             >
             @error('lugar_nacimiento')
                 <span class="invalid-feedback" role="alert">
@@ -129,16 +147,28 @@
         <div class="col-md-3">
             <label for="estado_civil" class="form-label">Estado Civil</label>
             <select class="form-control" name="estado_civil" id="estado_civil">
-                <option value="S" {{ ($datos_personales->estado_civil == 'S') ? 'selected' : '' }}>
+                <option
+                    value="S"
+                    {{ (old('estado_civil',$datos_personales->estado_civil) == 'S') ? 'selected' : '' }}
+                >
                     Soltero
                 </option>
-                <option value="C" {{ ($datos_personales->estado_civil == 'C') ? 'selected' : '' }}>
+                <option
+                    value="C"
+                    {{ (old('estado_civil',$datos_personales->estado_civil) == 'C') ? 'selected' : '' }}
+                >
                     Casado
                 </option>
-                <option value="V" {{ ($datos_personales->estado_civil == 'V') ? 'selected' : '' }}>
+                <option
+                    value="V"
+                    {{ (old('estado_civil',$datos_personales->estado_civil) == 'V') ? 'selected' : '' }}
+                >
                     Viudo
                 </option>
-                <option value="D" {{ ($datos_personales->estado_civil == 'D') ? 'selected' : '' }}>
+                <option
+                    value="D"
+                    {{ (old('estado_civil',$datos_personales->estado_civil) == 'D') ? 'selected' : '' }}
+                >
                     Divorciado
                 </option>
             </select>
@@ -146,13 +176,22 @@
         <div class="col-md-3">
             <label for="sexo" class="form-label">Sexo</label>
             <select class="form-control" name="sexo" id="sexo">
-                <option value="M" {{ ($datos_personales->sexo == 'M') ? 'selected' : '' }}>
+                <option
+                    value="M"
+                    {{ (old('sexo',$datos_personales->sexo) == 'M') ? 'selected' : '' }}
+                >
                     Masculino
                 </option>
-                <option value="F" {{ ($datos_personales->sexo == 'F') ? 'selected' : '' }}>
+                <option
+                    value="F"
+                    {{ (old('sexo',$datos_personales->sexo) == 'F') ? 'selected' : '' }}
+                >
                     Femenino
                 </option>
-                <option value="O" {{ ($datos_personales->sexo == 'O') ? 'selected' : '' }}>
+                <option
+                    value="O"
+                    {{ (old('sexo',$datos_personales->sexo) == 'O') ? 'selected' : '' }}
+                >
                     Otros
                 </option>
             </select>

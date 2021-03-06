@@ -2,40 +2,61 @@
     <legend>Datos Academicos</legend>
     <div class="row">
         <div class="col-md-4">
-            <label for="nivel" class="form-label">Nivel</label>
-            <select class="form-control" name="nivel" id="nivel">
-                <option value="3" {{ ($alumnos->nivel == '3') ? 'selected' : '' }}>
+            <label for="nivel" class="form-label">Nivel<small>(*)</small></label>
+            <select class="form-select" name="nivel" id="nivel">
+                <option
+                    value="3"
+                    {{ (old('nivel',$alumnos->nivel) == '3') ? 'selected' : '' }}
+                >
                     Salita 3
                 </option>
-                <option value="4" {{ ($alumnos->nivel == '4') ? 'selected' : '' }}>
+                <option
+                    value="4"
+                    {{ (old('nivel',$alumnos->nivel) == '4') ? 'selected' : '' }}
+                >
                     Salita 4
                 </option>
-                <option value="5" {{ ($alumnos->nivel == '5') ? 'selected' : '' }}>
+                <option
+                    value="5"
+                    {{ (old('nivel',$alumnos->nivel) == '5') ? 'selected' : '' }}
+                >
                     Salita 5
                 </option>
-                <option value="P" {{ ($alumnos->nivel == 'P') ? 'selected' : '' }}>
+                <option
+                    value="P"
+                    {{ (old('nivel',$alumnos->nivel) == 'P') ? 'selected' : '' }}
+                >
                     Primaria
                 </option>
-                <option value="S" {{ ($alumnos->nivel == 'S') ? 'selected' : '' }}>
+                <option
+                    value="S"
+                    {{ (old('nivel',$alumnos->nivel) == 'S') ? 'selected' : '' }}
+                >
                     Secundaria
                 </option>
-                <option value="T" {{ ($alumnos->nivel == 'T') ? 'selected' : '' }}>
+                <option
+                    value="T"
+                    {{ (old('nivel',$alumnos->nivel) == 'T') ? 'selected' : '' }}
+                >
                     Terciaria
                 </option>
-                <option value="U" {{ ($alumnos->nivel == 'U') ? 'selected' : '' }}>
+                <option
+                    value="U"
+                    {{ (old('nivel',$alumnos->nivel) == 'U') ? 'selected' : '' }}
+                >
                     Universidad
                 </option>
             </select>
         </div>
         <div class="col-md-2">
-            <label for="grado_ano" class="form-label">Grado/Año</label>
+            <label for="grado_ano" class="form-label">Grado/Año<small>(*)</small></label>
             <input
                 class="form-control @error('grado_ano') is-invalid @enderror"
                 type="number" 
                 name="grado_ano"
                 id="grado_ano"
                 placeholder="grado/año"
-                value="{{ old('grado año', $alumnos->grado_ano) }}"
+                value="{{ old('grado_año', $alumnos->grado_ano) }}"
             >
             @error('grado_ano')
                 <span class="invalid-feedback" role="alert">
@@ -44,7 +65,7 @@
             @enderror
         </div>
         <div class="col-md-2">
-            <label for="division" class="form-label">Division</label>
+            <label for="division" class="form-label">Division<small>(*)</small></label>
             <input
                 class="form-control @error('division') is-invalid @enderror"
                 type="text"
@@ -59,15 +80,24 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="turno" class="form-label">Turno</label>
-            <select class="form-control" name="turno" id="turno">
-                <option value="M" {{ ($alumnos->turno == 'M') ? 'selected' : '' }}>
+            <label for="turno" class="form-label">Turno<small>(*)</small></label>
+            <select class="form-select" name="turno" id="turno">
+                <option
+                    value="M"
+                    {{ (old('turno',$alumnos->turno) == 'M') ? 'selected' : '' }}
+                >
                     Mañana
                 </option>
-                <option value="T" {{ ($alumnos->turno == 'T') ? 'selected' : '' }}>
+                <option
+                    value="T"
+                    {{ (old('turno',$alumnos->turno) == 'T') ? 'selected' : '' }}
+                >
                     Tarde
                 </option>
-                <option value="N" {{ ($alumnos->turno == 'N') ? 'selected' : '' }}>
+                <option
+                    value="N"
+                    {{ (old('turno',$alumnos->turno) == 'N') ? 'selected' : '' }}
+                >
                     Noche
                 </option>
             </select>
@@ -81,18 +111,18 @@
                 name="alumno_observaciones"
                 id="alumno_observaciones"
                 rows="3"
-            >{{ $alumnos->alumno_observaciones }}</textarea>
+            >{{ old('alumno_observaciones',$alumnos->alumno_observaciones) }}</textarea>
         </div>
         <div class="col-md-4">
-            <label for="estado" class="form-label">Estado</label>
-            <select class="form-control" name="estado" id="estado">
-                <option value="I" {{ ($alumnos->tipo_estado == 'I') ? 'selected' : '' }}>
+            <label for="estado" class="form-label">Estado<small>(*)</small></label>
+            <select class="form-select" name="estado" id="estado">
+                <option value="I" {{ (old('estado',$alumnos->tipo_estado) == 'I') ? 'selected' : '' }}>
                     Inscripto
                 </option>
-                <option value="N" {{ ($alumnos->tipo_estado == 'N') ? 'selected' : '' }}>
+                <option value="N" {{ (old('estado',$alumnos->tipo_estado) == 'N') ? 'selected' : '' }}>
                     No Inscripto
                 </option>
-                <option value="B" {{ ($alumnos->tipo_estado == 'B') ? 'selected' : '' }}>
+                <option value="B" {{ (old('estado',$alumnos->tipo_estado) == 'B') ? 'selected' : '' }}>
                     Baja
                 </option>
             </select>

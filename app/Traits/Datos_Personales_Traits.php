@@ -27,7 +27,7 @@ trait Datos_Personales_Traits {
     public function validacion_request_datos_personales()
     {
         return request()->validate([
-            'documento' => 'required',
+            'documento' => 'required|unique:datos_personales,id_dp',
             'nombre' => 'required',
             'apellido' => 'required',
             'fecha_nacimiento' => 'required',

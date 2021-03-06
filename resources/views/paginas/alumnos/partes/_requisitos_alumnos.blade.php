@@ -6,7 +6,7 @@
             class="form-check-input"
             type="checkbox"
             name="partida_nacimiento"
-            {{ ($requisitos->partida_nacimiento) ? 'checked' : ''}}
+            {{ (old('partida_nacimiento',$requisitos->partida_nacimiento)) ? 'checked' : ''}}
         >
     </div>
     <div class="form-check">
@@ -15,7 +15,7 @@
             class="form-check-input"
             type="checkbox"
             name="dni"
-            {{ ($requisitos->dni) ? 'checked' : '' }}
+            {{ (old('dni',$requisitos->dni)) ? 'checked' : '' }}
         >
     </div>
     <div class="form-check">
@@ -24,7 +24,7 @@
             class="form-check-input" 
             type="checkbox"
             name="cuil"
-            {{ ($requisitos->cuil) ? 'checked' : '' }}
+            {{ (old('cuil',$requisitos->cuil)) ? 'checked' : '' }}
         >
     </div>
     <div class="form-check">
@@ -33,7 +33,7 @@
             class="form-check-input"
             type="checkbox" 
             name="foto_4x4"
-            {{ ($requisitos->foto_4x4) ? 'checked' : '' }}
+            {{ (old('foto_4x4',$requisitos->foto_4x4)) ? 'checked' : '' }}
         >
     </div>
     <div class="form-check">
@@ -42,7 +42,7 @@
             class="form-check-input" 
             type="checkbox" 
             name="contrato"
-            {{ ($requisitos->contrato) ? 'checked' : '' }}
+            {{ (old('contrato',$requisitos->contrato)) ? 'checked' : '' }}
         >
     </div>
 </fieldset>

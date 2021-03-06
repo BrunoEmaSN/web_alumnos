@@ -62,7 +62,7 @@
                     type="checkbox"
                     name="subencionado"
                     id="subencionado"
-                    {{ ($docentes->subencionado) ? 'checked' : '' }}
+                    {{ (old('subencionado',$docentes->subencionado)) ? 'checked' : '' }}
                 >
                 <label for="contratos" class="form-check-label">Subencionado</label>
             </div>
@@ -71,8 +71,8 @@
                     class="form-check-input"
                     type="checkbox"
                     name="contratado"
-                    id="subencionado"
-                    {{ ($docentes->contratado) ? 'checked' : '' }}
+                    id="contratado"
+                    {{ (old('contratado',$docentes->contratado)) ? 'checked' : '' }}
                 >
                 <label for="contratado" class="form-check-label">Contratado</label>
             </div>
@@ -82,7 +82,7 @@
                     type="checkbox"
                     name="monotributista"
                     id="monotributista"
-                    {{ ($docentes->monotributista) ? 'checked' : '' }}
+                    {{ (old('monotributista',$docentes->monotributista)) ? 'checked' : '' }}
                 >
                 <label for="monotributista" class="form-check-label">Monotributista</label>
             </div>

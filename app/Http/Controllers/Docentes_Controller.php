@@ -71,8 +71,16 @@ class Docentes_Controller extends Controller
         $docentes = $this->docentes_save($request, new Docente);
         $docentes->fecha_agregado = date("Y-m-d");
 
-        $datos_personales->save();
-        $docentes->save();
+        try {
+            $datos_personales->save();
+            $docentes->save();
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+        }
+        
+
+        
 
         return redirect()->route('docentes.index');
     }
@@ -122,9 +130,14 @@ class Docentes_Controller extends Controller
 
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
         $docentes = $this->docentes_save($request, Docente::find($id));
-
-        $datos_personales->save();
-        $docentes->save();
+        try {
+            $datos_personales->save();
+            $docentes->save();
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+        }
+        
 
         return redirect()->route('docentes.index');
     }
@@ -140,9 +153,13 @@ class Docentes_Controller extends Controller
         $datos_personales = Datos_Personales::find($id);
         $docentes = Docente::find($id);
 
-        $docentes->delete();
-        $datos_personales->delete();
-
+        try {
+            $docentes->delete();
+            $datos_personales->delete();
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+        }
         return redirect()->route('docentes.index');
     }
 }

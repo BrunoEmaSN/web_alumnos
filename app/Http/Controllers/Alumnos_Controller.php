@@ -87,11 +87,17 @@ class Alumnos_Controller extends Controller
         $alumnos->fecha_agregado = date("Y-m-d");
         $requisitos_alumnos = $this->requisitos_alumnos_save($request, new Requisitos_Alumnos);
 
-        $datos_personales->save();
-        $alumnos->save();
-        $requisitos_alumnos->save();
+        try {
+            $datos_personales->save();
+            $alumnos->save();
+            $requisitos_alumnos->save();
 
-        $this->tutores_alumnos_save($request);
+            $this->tutores_alumnos_save($request);
+
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+        }
 
         return redirect()->route('alumnos.index');
     }
@@ -156,12 +162,18 @@ class Alumnos_Controller extends Controller
         $alumnos = $this->alumnos_save($request, Alumno::find($id));
         $requisitos_alumnos = $this->requisitos_alumnos_save($request, Requisitos_Alumnos::find($id));
 
-        $requisitos_alumnos->save();
-        $alumnos->save();
-        $datos_personales->save();
+        try {
+            $requisitos_alumnos->save();
+            $alumnos->save();
+            $datos_personales->save();
 
-        $this->tutores_alumnos_delete($request);
-        $this->tutores_alumnos_save($request);
+            $this->tutores_alumnos_delete($request);
+            $this->tutores_alumnos_save($request);
+
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' =>'error:'.$error_code, 'tipo' => 'error']);
+        }
 
         return redirect()->route('alumnos.index');
     }
@@ -178,10 +190,15 @@ class Alumnos_Controller extends Controller
         $alumnos = Alumno::find($id);
         $requisitos_alumnos = Requisitos_Alumnos::find($id);
 
-        $this->tutores_alumnos_delete($request);
-        $requisitos_alumnos->delete();
-        $alumnos->delete();
-        $datos_personales->delete();
+        try {
+            $this->tutores_alumnos_delete($id);
+            $requisitos_alumnos->delete();
+            $alumnos->delete();
+            $datos_personales->delete();
+        } catch (\Exception $e) {
+            $error_code = $e->errorInfo[1];
+            return back()->with( 'status',['message' =>'error:'.$error_code, 'tipo' => 'error']);
+        }
         
         return redirect()->route('alumnos.index');
     }

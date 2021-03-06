@@ -13,7 +13,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        \Illuminate\Database\QueryException::class
     ];
 
     /**
@@ -36,6 +36,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
+        if ($exception instanceof CustomException) {
+            //
+        }
+
         parent::report($exception);
     }
 
