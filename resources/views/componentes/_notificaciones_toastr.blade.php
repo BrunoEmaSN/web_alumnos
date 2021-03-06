@@ -1,5 +1,5 @@
 @if(session('status'))
-    @if (session('status')['tipo'])
+    @if (session('status')['tipo'] == 'exito')
         <script>
             toastr.success("{!! session('status')['message'] !!}")
         </script>

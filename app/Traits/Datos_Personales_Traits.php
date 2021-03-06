@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Validation\Rule;
+
 trait Datos_Personales_Traits {
     public function datos_personales_save($request, $datos_personales)
     {
@@ -27,7 +29,7 @@ trait Datos_Personales_Traits {
     public function validacion_request_datos_personales()
     {
         return request()->validate([
-            'documento' => 'required|unique:datos_personales,id_dp',
+            'documento' => 'required',
             'nombre' => 'required',
             'apellido' => 'required',
             'fecha_nacimiento' => 'required',

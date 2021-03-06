@@ -96,10 +96,13 @@ class Alumnos_Controller extends Controller
 
         } catch (\Exception $e) {
             $error_code = $e->errorInfo[1];
-            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+            return back()
+                ->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
         }
 
-        return redirect()->route('alumnos.index');
+        return redirect()
+            ->route('alumnos.index')
+            ->with( 'status',['message' =>'exito: se guardo', 'tipo' => 'exito']);
     }
 
     /**
@@ -172,10 +175,13 @@ class Alumnos_Controller extends Controller
 
         } catch (\Exception $e) {
             $error_code = $e->errorInfo[1];
-            return back()->with( 'status',['message' =>'error:'.$error_code, 'tipo' => 'error']);
+            return back()
+                ->with( 'status',['message' =>'error:'.$error_code, 'tipo' => 'error']);
         }
 
-        return redirect()->route('alumnos.index');
+        return redirect()
+            ->route('alumnos.index')
+            ->with( 'status',['message' =>'exito: se actualizo', 'tipo' => 'exito']);
     }
 
     /**
