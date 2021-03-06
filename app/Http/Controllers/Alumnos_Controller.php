@@ -170,7 +170,7 @@ class Alumnos_Controller extends Controller
             $alumnos->save();
             $datos_personales->save();
 
-            $this->tutores_alumnos_delete($request);
+            $this->tutores_alumnos_delete($id);
             $this->tutores_alumnos_save($request);
 
         } catch (\Exception $e) {
