@@ -65,9 +65,13 @@
             </tbody>
         </table>
     </div>
+    <script src="{{ asset('js/_datatable_translate.js') }}"></script>
     <script>
         $(document).ready( function () {
-            $('#tutores').DataTable();
+            $('#tutores').DataTable({
+                scrollX: true,
+                language: language
+            });
         } );
     </script>
     @include('componentes._notificaciones_toastr')
