@@ -67,7 +67,7 @@ class Tutores_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $this->validacion_request_datos_personales();
+        $this->validacion_request_datos_personales($request->documento);
         $this->validacion_request_tutores();
 
         $datos_personales = $this->datos_personales_save($request, new Datos_Personales);
@@ -82,11 +82,14 @@ class Tutores_Controller extends Controller
                 $pareja_tutor->save();
             }
         } catch (\Exception $e) {
-            $error_code = $e->errorInfo[1];
-            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+            return back()
+                ->with( 'status',['message' => 'error:'.$e->getMessage(), 'tipo' => 'error'])
+                ->withInput();
         }
 
-        return redirect()->route('tutores.index');
+        return redirect()
+            ->route('tutores.index')
+            ->with( 'status',['message' =>'exito: se guardo', 'tipo' => 'exito']);
     }
 
     /**
@@ -138,7 +141,7 @@ class Tutores_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validacion_request_datos_personales();
+        $this->validacion_request_datos_personales($id);
         $this->validacion_request_tutores();
 
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
@@ -157,11 +160,14 @@ class Tutores_Controller extends Controller
                 $this->pareja_tutor_delete(Pareja_Tutor::find($id));
             }
         } catch (\Exception $e) {
-            $error_code = $e->errorInfo[1];
-            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+            return back()
+                ->with( 'status',['message' => 'error:'.$e->getMessage(), 'tipo' => 'error'])
+                ->withInput();
         }
 
-        return redirect()->route('tutores.index');
+        return redirect()
+            ->route('tutores.index')
+            ->with( 'status',['message' =>'exito: se actualizo', 'tipo' => 'exito']);
     }
 
     /**
@@ -184,10 +190,12 @@ class Tutores_Controller extends Controller
             $tutores->delete();
             $datos_personales->delete();
         } catch (\Exception $e) {
-            $error_code = $e->errorInfo[1];
-            return back()->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+            return back()
+                ->with( 'status',['message' => 'error:'.$e->getMessage(), 'tipo' => 'error'])
+                ->withInput();
         }
         
-        return redirect()->route('tutores.index');
+        return redirect()->route('tutores.index')
+            ->with( 'status',['message' =>'exito: se elimino', 'tipo' => 'exito']);
     }
 }

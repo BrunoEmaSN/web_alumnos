@@ -26,10 +26,13 @@ trait Datos_Personales_Traits {
         return $datos_personales;
     }
 
-    public function validacion_request_datos_personales()
+    public function validacion_request_datos_personales($id)
     {
         return request()->validate([
-            'documento' => 'required',
+            'documento' => [
+                'required',
+                Rule::unique('datos_personales', 'id_dp')->ignore($id, 'id_dp'),
+            ],
             'nombre' => 'required',
             'apellido' => 'required',
             'fecha_nacimiento' => 'required',

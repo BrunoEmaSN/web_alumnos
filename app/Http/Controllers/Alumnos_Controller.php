@@ -79,7 +79,7 @@ class Alumnos_Controller extends Controller
      */
     public function store(Request $request)
     {
-        $this->validacion_request_datos_personales();
+        $this->validacion_request_datos_personales($request->documento);
         $this->validacion_request_alumnos();
 
         $datos_personales = $this->datos_personales_save($request, new Datos_Personales);
@@ -95,9 +95,9 @@ class Alumnos_Controller extends Controller
             $this->tutores_alumnos_save($request);
 
         } catch (\Exception $e) {
-            $error_code = $e->errorInfo[1];
             return back()
-                ->with( 'status',['message' => 'error:'.$error_code, 'tipo' => 'error']);
+                ->with( 'status',['message' => 'error:'.$e->getMessage(), 'tipo' => 'error'])
+                ->withInput();
         }
 
         return redirect()
@@ -158,7 +158,7 @@ class Alumnos_Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validacion_request_datos_personales();
+        $this->validacion_request_datos_personales($id);
         $this->validacion_request_alumnos();
 
         $datos_personales = $this->datos_personales_save($request, Datos_Personales::find($id));
@@ -174,9 +174,9 @@ class Alumnos_Controller extends Controller
             $this->tutores_alumnos_save($request);
 
         } catch (\Exception $e) {
-            $error_code = $e->errorInfo[1];
             return back()
-                ->with( 'status',['message' =>'error:'.$error_code, 'tipo' => 'error']);
+                ->with( 'status',['message' =>'error:'.$e->getMessage(), 'tipo' => 'error'])
+                ->withInput();
         }
 
         return redirect()
@@ -202,10 +202,13 @@ class Alumnos_Controller extends Controller
             $alumnos->delete();
             $datos_personales->delete();
         } catch (\Exception $e) {
-            $error_code = $e->errorInfo[1];
-            return back()->with( 'status',['message' =>'error:'.$error_code, 'tipo' => 'error']);
+            return back()
+                ->with( 'status',['message' =>'error:'.$e->getMessage(), 'tipo' => 'error'])
+                ->withInput();
         }
         
-        return redirect()->route('alumnos.index');
+        return redirect()
+            ->route('alumnos.index')
+            ->with( 'status',['message' =>'exito: se elimino', 'tipo' => 'exito']);
     }
 }
