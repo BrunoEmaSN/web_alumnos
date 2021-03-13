@@ -26,20 +26,7 @@ class Tutores_Controller extends Controller
 
     public function index()
     {
-        $tutores = Tutor::join('datos_personales AS dp', 'dp.id_dp', '=', 'tutores.id_t')
-            ->select(
-                'dp.nombre',
-                'dp.apellido',
-                'dp.id_dp AS documento',
-                'dp.tipo_documento',
-                'tutores.telefono_laboral',
-                'dp.telefono_fijo',
-                'dp.telefono_movil'
-            )
-            ->get();
-        return view('paginas.tutores.index', [
-            'tutores' => $tutores
-        ]);
+        return view('paginas.tutores.index');
     }
 
     /**

@@ -31,25 +31,7 @@ class Alumnos_Controller extends Controller
 
     public function index()
     {
-        $alumnos = Alumno::join('datos_personales AS dp', 'dp.id_dp', '=', 'alumnos.id_a')
-            ->join('requisitos_alumnos AS ra', 'ra.id_ra', '=', 'alumnos.id_a')
-            ->select(
-                'alumnos.fecha_agregado AS agregado',
-                'dp.nombre',
-                'dp.apellido',
-                'dp.id_dp AS documento',
-                'dp.tipo_documento AS tipo_documento',
-                'alumnos.tipo_estado AS estado',
-                'ra.partida_nacimiento',
-                'ra.dni',
-                'ra.cuil',
-                'ra.foto_4x4',
-                'ra.contrato'
-            )
-            ->get();
-        return view('paginas.alumnos.index', [
-            'alumnos' => $alumnos
-        ]);
+        return view('paginas.alumnos.index');
     }
 
     /**

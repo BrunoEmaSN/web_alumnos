@@ -1,0 +1,1 @@
+<span>{{ $tipo_documento.':'.$documento }}</span>

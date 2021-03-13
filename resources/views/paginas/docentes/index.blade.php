@@ -9,74 +9,34 @@
         <table id="docentes" class="table" style="width:100%">
             <thead>
                 <tr>
-                    <th>
-                        C.U.I.T.
-                    </th>
-                    <th>
-                        Nombre
-                    </th>
-                    <th>
-                        Apellido
-                    </th>
-                    <th>
-                        Titulo
-                    </th>
-                    <th>
-                        Contrato
-                    </th>
-                    <th>
-                        Opciones
-                    </th>
+                    <th data-id="cuit">C.U.I.T.</th>
+                    <th data-id="nombre">Nombre</th>
+                    <th data-id="apellido">Apellido</th>
+                    <th data-id="titulo">Titulo</th>
+                    <th data-id="contrato">Contrato</th>
+                    <th data-id="opciones">Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($docentes as $d)
-                <tr>
-                    <td>{{ $d->cuit }}</td>
-                    <td>{{ $d->nombre }}</td>
-                    <td>{{ $d->apellido }}</td>
-                    <td>{{ $d->titulo }}</td>
-                    <td>
-                        <div>{{ ($d->subencionado) ? '- Subencionado' : '' }}</div>
-                        <div>{{ ($d->contratado) ? '- Contratado' : '' }}</div>
-                        <div>{{ ($d->monotributista) ? '- Monotributista' : '' }}</div>
-                    </td>
-                    <td>
-                        <a 
-                            type="button"
-                            class="btn btn-outline-info"
-                            href="{{ route('docentes.show', $d->documento) }}"
-                            title="ver"
-                        >
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a
-                            type="button"
-                            class="btn btn-outline-warning"
-                            href="{{ route('docentes.edit', $d->documento) }}"
-                            title="editar"
-                        >
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form action="{{ route('docentes.destroy', $d->documento) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-outline-danger" title="eliminar">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
     <script src="{{ asset('js/_datatable_translate.js') }}"></script>
     <script>
         $(document).ready( function () {
             $('#docentes').DataTable({
+                processing: true,
+                serverSide: true,
                 scrollX: true,
-                language: language
+                language: language,
+                ajax: "{{ url('api/docentes') }}",
+                columns:[
+                    {data: 'cuit'},
+                    {data: 'nombre'},
+                    {data: 'apellido'},
+                    {data: 'titulo'},
+                    {data: 'contrato'},
+                    {data: 'opciones'}
+                ]
             });
         } );
     </script>

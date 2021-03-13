@@ -19,71 +19,27 @@
                     <th data-id="opciones"> Opciones</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($alumnos as $a)
-                <tr>
-                    <td>{{ $a->agregado }}</td>
-                    <td>{{ $a->nombre }}</td>
-                    <td>{{ $a->apellido }}</td>
-                    <td>
-                        {{ $a->tipo_documento.':'.$a->documento }}
-                    </td>
-                    <td>
-                        @switch($a->estado)
-                            @case('I')
-                                Inscripto
-                                @break
-                            @case('N')
-                                No Inscripto
-                                @break
-                            @case('B')
-                                Baja
-                                @break
-                        @endswitch
-                    </td>
-                    <td>
-                        <div>{{ (!$a->partida_nacimiento) ? '- Partida Nacimiento' : '' }}</div>
-                        <div>{{ (!$a->dni) ? '- D.N.I.' : '' }}</div>
-                        <div>{{ (!$a->cuil) ? '- C.U.I.L.' : '' }}</div>
-                        <div>{{ (!$a->foto_4x4) ? '- Foto 4 x 4' : '' }}</div>
-                        <div>{{ (!$a->contrato) ? '- Contrato' : '' }}</div>
-                    </td>
-                    <td>
-                        <a 
-                            type="button"
-                            class="btn btn-outline-info"
-                            href="{{ route('alumnos.show', $a->documento) }}"
-                            title="ver"
-                        >
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a
-                            type="button"
-                            class="btn btn-outline-warning"
-                            href="{{ route('alumnos.edit', $a->documento) }}"
-                            title="editar"
-                        >
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form action="{{ route('alumnos.destroy', $a->documento) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-outline-danger" title="eliminar">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
     <script src="{{ asset('js/_datatable_translate.js') }}"></script>
     <script>
         $(document).ready( function () {
             $('#alumnos').DataTable({
+                processing: true,
+                serverSide: true,
                 scrollX: true,
-                language: language
+                language: language,
+                ajax: "{{ url('api/alumnos') }}",
+                columns:[
+                    {data: 'agregado'},
+                    {data: 'nombre'},
+                    {data: 'apellido'},
+                    {data: 'documento'},
+                    {data: 'estado'},
+                    {data: 'faltantes'},
+                    {data: 'opciones'}
+                ]
             });
         });
     </script>

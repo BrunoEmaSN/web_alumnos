@@ -2,7 +2,51 @@
 
 namespace App\Traits;
 
+use App\Docente;
+
 trait Docentes_Traits {
+    public function docentes_show()
+    {
+        $docentes = Docente::join('datos_personales AS dp', 'dp.id_dp', '=', 'docentes.id_d')
+            ->select(
+                'dp.id_dp as documento',
+                'docentes.cuit',
+                'dp.nombre',
+                'dp.apellido',
+                'docentes.titulo',
+                'docentes.subencionado',
+                'docentes.contratado',
+                'docentes.monotributista'
+            )
+            ->get();
+        $data = [];
+        foreach ($docentes as $d) {
+            $data[] = array(
+                'cuit' => $d->cuit,
+                'nombre' => $d->nombre,
+                'apellido' => $d->apellido,
+                'titulo' => $d->titulo,
+                'contrato' => view('paginas.docentes.partes._contrato', [
+                    'subencionado' => $d->subencionado,
+                    'contratado' => $d->contratado,
+                    'monotributista' => $d->monotributista
+                ])->render(),
+                'opciones' => view('componentes._opciones',[
+                    'show' => route('docentes.show', $d->documento),
+                    'edit' => route('docentes.edit', $d->documento),
+                    'delete' => route('docentes.destroy', $d->documento)
+                ])->render()
+            );
+        }
+
+        $resultado = array(
+            'draw' => 1,
+            'recordsTotal' => sizeof($docentes),
+            'recordsFiltered' => sizeof($docentes),
+            'data' => $data
+        );
+        return json_encode($resultado);
+    }
     public function docentes_save($request, $docentes)
     {
         $docentes->id_d = $request->documento;

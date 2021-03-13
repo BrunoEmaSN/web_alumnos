@@ -23,21 +23,7 @@ class Docentes_Controller extends Controller
 
     public function index()
     {
-        $docentes = Docente::join('datos_personales AS dp', 'dp.id_dp', '=', 'docentes.id_d')
-            ->select(
-                'dp.id_dp as documento',
-                'docentes.cuit',
-                'dp.nombre',
-                'dp.apellido',
-                'docentes.titulo',
-                'docentes.subencionado',
-                'docentes.contratado',
-                'docentes.monotributista'
-            )
-            ->get();
-        return view('paginas.docentes.index', [
-            'docentes' => $docentes
-        ]);
+        return view('paginas.docentes.index');
     }
 
     /**
